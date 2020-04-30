@@ -100,6 +100,7 @@ class OperacionesTest {
         val tipo5 = vct.identificarTipoTriangulo(4.0,4.0,4.0)
         assertFalse(tipo5 == TrianguloTipo.ESCALENO)
     }
+    // Hola
     @Test
     fun identificarIsosceles() {
         val vct = Operaciones()

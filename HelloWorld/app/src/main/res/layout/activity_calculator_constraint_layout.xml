@@ -165,6 +165,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="@string/value_1"
+        android:onClick="onNumberButtonClicked"
         app:layout_constraintBottom_toTopOf="@id/btn0"
         app:layout_constraintEnd_toStartOf="@id/btn2"
         app:layout_constraintStart_toStartOf="parent"

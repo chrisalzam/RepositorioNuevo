@@ -15,23 +15,12 @@
         android:textAlignment="viewEnd"
         android:textSize="50sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/btn7"
+        app:layout_constraintBottom_toTopOf="@id/btnAC"
         app:layout_constraintEnd_toEndOf="@id/btn_point"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btn7"
-        style="@style/ButtonDesign"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="@string/value_7"
-        app:layout_constraintBottom_toTopOf="@id/btn4"
-        app:layout_constraintEnd_toStartOf="@id/btn8"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnAC" />
-
-
+    <!--region Row 1 - Special Buttons-->
     <Button
         android:id="@+id/btnAC"
         style="@style/ButtonOperatorsDesign"
@@ -44,17 +33,6 @@
         app:layout_constraintTop_toBottomOf="@id/tvScreen" />
 
     <Button
-        android:id="@+id/btn8"
-        style="@style/ButtonDesign"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="@string/value_8"
-        app:layout_constraintBottom_toTopOf="@id/btn5"
-        app:layout_constraintEnd_toStartOf="@id/btn9"
-        app:layout_constraintStart_toEndOf="@id/btn7"
-        app:layout_constraintTop_toBottomOf="@id/btnplusmin" />
-
-    <Button
         android:id="@+id/btnplusmin"
         style="@style/ButtonOperatorsDesign"
         android:layout_width="0dp"
@@ -64,28 +42,6 @@
         app:layout_constraintEnd_toStartOf="@id/btnpercent"
         app:layout_constraintStart_toEndOf="@id/btnAC"
         app:layout_constraintTop_toBottomOf="@id/tvScreen" />
-
-    <Button
-        android:id="@+id/btn9"
-        style="@style/ButtonDesign"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="@string/value_9"
-        app:layout_constraintBottom_toTopOf="@id/btn6"
-        app:layout_constraintEnd_toEndOf="@id/btndivision"
-        app:layout_constraintStart_toEndOf="@id/btn8"
-        app:layout_constraintTop_toBottomOf="@id/btnpercent" />
-
-    <Button
-        android:id="@+id/btndivision"
-        style="@style/ButtonOperatorsDesign"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="@string/division"
-        app:layout_constraintBottom_toTopOf="@id/btnmultiplication"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btn9"
-        app:layout_constraintTop_toBottomOf="@id/btnsqroot" />
 
     <Button
         android:id="@+id/btnpercent"
@@ -108,7 +64,55 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/btnpercent"
         app:layout_constraintTop_toBottomOf="@id/tvScreen" />
+    <!--endregion-->
 
+    <!--region 7, 8, 9, /-->
+    <Button
+        android:id="@+id/btn7"
+        style="@style/ButtonDesign"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="@string/value_7"
+        app:layout_constraintBottom_toTopOf="@id/btn4"
+        app:layout_constraintEnd_toStartOf="@id/btn8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnAC" />
+
+    <Button
+        android:id="@+id/btn8"
+        style="@style/ButtonDesign"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="@string/value_8"
+        app:layout_constraintBottom_toTopOf="@id/btn5"
+        app:layout_constraintEnd_toStartOf="@id/btn9"
+        app:layout_constraintStart_toEndOf="@id/btn7"
+        app:layout_constraintTop_toBottomOf="@id/btnplusmin" />
+
+    <Button
+        android:id="@+id/btn9"
+        style="@style/ButtonDesign"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="@string/value_9"
+        app:layout_constraintBottom_toTopOf="@id/btn6"
+        app:layout_constraintEnd_toEndOf="@id/btndivision"
+        app:layout_constraintStart_toEndOf="@id/btn8"
+        app:layout_constraintTop_toBottomOf="@id/btnpercent" />
+
+    <Button
+        android:id="@+id/btndivision"
+        style="@style/ButtonOperatorsDesign"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="@string/division"
+        app:layout_constraintBottom_toTopOf="@id/btnmultiplication"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btn9"
+        app:layout_constraintTop_toBottomOf="@id/btnsqroot" />
+    <!--endregion-->
+
+    <!--region 4, 5, 6, *-->
     <Button
         android:id="@+id/btn4"
         style="@style/ButtonDesign"
@@ -152,7 +156,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/btn6"
         app:layout_constraintTop_toBottomOf="@id/btndivision" />
+    <!--endregion-->
 
+    <!--region 1, 2, 3, - -->
     <Button
         android:id="@+id/btn1"
         style="@style/ButtonDesign"
@@ -196,7 +202,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/btn3"
         app:layout_constraintTop_toBottomOf="@id/btnmultiplication" />
+    <!--endregion-->
 
+    <!--region 0, ., +-->
     <Button
         android:id="@+id/btn0"
         style="@style/ButtonDesign"
@@ -229,6 +237,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/btn_point"
         app:layout_constraintTop_toBottomOf="@id/btnsubtraction" />
-
+    <!--endregion-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

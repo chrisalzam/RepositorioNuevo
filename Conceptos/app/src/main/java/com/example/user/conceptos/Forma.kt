@@ -4,5 +4,6 @@ enum class Forma {
     CUADRADO,
     CIRCULO,
     TRIANGULO,
-    RECTANGULO
+    RECTANGULO,
+    NINGUNO
 }

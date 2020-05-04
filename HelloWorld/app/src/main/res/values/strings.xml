@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Hello World</string>
+    <string name="hi">Hiiiii</string>
+    <string translatable="false" name="result">0</string>
+    <string translatable="false" name="value_1">1</string>
+    <string translatable="false" name="value_2">2</string>
+    <string translatable="false" name="value_3">3</string>
+    <string translatable="false" name="value_4">4</string>
+    <string translatable="false" name="value_5">5</string>
+    <string translatable="false" name="value_6">6</string>
+    <string translatable="false" name="value_7">7</string>
+    <string translatable="false" name="value_8">8</string>
+    <string translatable="false" name="value_9">9</string>
+    <string translatable="false" name="calculator_button">Calculator</string>
+    <string translatable="false" name="value_0">0</string>
+    <string translatable="false" name="point">.</string>
+    <string translatable="false" name="ac">AC</string>
+    <string translatable="false" name="plusmin">+/-</string>
+    <string translatable="false" name="percentage">%</string>
+    <string translatable="false" name="squareroot">√</string>
+    <string translatable="false" name="division">/</string>
+    <string translatable="false" name="multiplication">*</string>
+    <string translatable="false" name="subtraction">-</string>
+    <string translatable="false" name="addition">+</string>
+</resources>

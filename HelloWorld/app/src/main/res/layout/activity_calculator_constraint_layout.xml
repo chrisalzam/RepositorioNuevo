@@ -10,7 +10,7 @@
         android:id="@+id/tvScreen"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:background="@color/colorAccent"
+        android:background="@color/colorWhite"
         android:text="@string/result"
         android:textAlignment="viewEnd"
         android:textSize="50sp"
@@ -27,21 +27,22 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="@string/ac"
+        android:onClick="onACButtonClicked"
         app:layout_constraintBottom_toTopOf="@id/btn7"
-        app:layout_constraintEnd_toStartOf="@id/btnplusmin"
+        app:layout_constraintEnd_toStartOf="@id/btnpercent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvScreen" />
 
     <Button
-        android:id="@+id/btnplusmin"
+        android:id="@+id/btnEqual"
         style="@style/ButtonOperatorsDesign"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:text="@string/plusmin"
-        app:layout_constraintBottom_toTopOf="@id/btn8"
-        app:layout_constraintEnd_toStartOf="@id/btnpercent"
-        app:layout_constraintStart_toEndOf="@id/btnAC"
-        app:layout_constraintTop_toBottomOf="@id/tvScreen" />
+        android:text="@string/equal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btn_point"
+        app:layout_constraintTop_toBottomOf="@id/btn3" />
 
     <Button
         android:id="@+id/btnpercent"
@@ -50,9 +51,9 @@
         android:layout_height="0dp"
         android:text="@string/percentage"
         android:onClick="onOperationButtonClicked"
-        app:layout_constraintBottom_toTopOf="@id/btn9"
-        app:layout_constraintEnd_toEndOf="@id/btnsqroot"
-        app:layout_constraintStart_toEndOf="@id/btnplusmin"
+        app:layout_constraintBottom_toTopOf="@id/btn8"
+        app:layout_constraintEnd_toStartOf="@id/btnsqroot"
+        app:layout_constraintStart_toEndOf="@id/btnAC"
         app:layout_constraintTop_toBottomOf="@id/tvScreen" />
 
     <Button
@@ -62,8 +63,8 @@
         android:layout_height="0dp"
         android:text="@string/squareroot"
         android:onClick="onOperationButtonClicked"
-        app:layout_constraintBottom_toTopOf="@id/btndivision"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btn9"
+        app:layout_constraintEnd_toStartOf="@id/btndivision"
         app:layout_constraintStart_toEndOf="@id/btnpercent"
         app:layout_constraintTop_toBottomOf="@id/tvScreen" />
     <!--endregion-->
@@ -91,7 +92,7 @@
         app:layout_constraintBottom_toTopOf="@id/btn5"
         app:layout_constraintEnd_toStartOf="@id/btn9"
         app:layout_constraintStart_toEndOf="@id/btn7"
-        app:layout_constraintTop_toBottomOf="@id/btnplusmin" />
+        app:layout_constraintTop_toBottomOf="@id/btnpercent" />
 
     <Button
         android:id="@+id/btn9"
@@ -101,9 +102,9 @@
         android:onClick="onNumberButtonClicked"
         android:text="@string/value_9"
         app:layout_constraintBottom_toTopOf="@id/btn6"
-        app:layout_constraintEnd_toEndOf="@id/btndivision"
+        app:layout_constraintEnd_toStartOf="@id/btnmultiplication"
         app:layout_constraintStart_toEndOf="@id/btn8"
-        app:layout_constraintTop_toBottomOf="@id/btnpercent" />
+        app:layout_constraintTop_toBottomOf="@id/btnsqroot" />
 
     <Button
         android:id="@+id/btndivision"
@@ -114,8 +115,8 @@
         android:onClick="onOperationButtonClicked"
         app:layout_constraintBottom_toTopOf="@id/btnmultiplication"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btn9"
-        app:layout_constraintTop_toBottomOf="@id/btnsqroot" />
+        app:layout_constraintStart_toEndOf="@id/btnsqroot"
+        app:layout_constraintTop_toBottomOf="@id/tvScreen" />
     <!--endregion-->
 
     <!--region 4, 5, 6, *-->
@@ -151,7 +152,7 @@
         android:onClick="onNumberButtonClicked"
         android:text="@string/value_6"
         app:layout_constraintBottom_toTopOf="@id/btn3"
-        app:layout_constraintEnd_toEndOf="@id/btnmultiplication"
+        app:layout_constraintEnd_toStartOf="@id/btnsubtraction"
         app:layout_constraintStart_toEndOf="@id/btn5"
         app:layout_constraintTop_toBottomOf="@id/btn9" />
 
@@ -164,7 +165,7 @@
         android:onClick="onOperationButtonClicked"
         app:layout_constraintBottom_toTopOf="@id/btnsubtraction"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btn6"
+        app:layout_constraintStart_toEndOf="@id/btn9"
         app:layout_constraintTop_toBottomOf="@id/btndivision" />
     <!--endregion-->
 
@@ -188,7 +189,7 @@
         android:layout_height="0dp"
         android:onClick="onNumberButtonClicked"
         android:text="@string/value_2"
-        app:layout_constraintBottom_toTopOf="@id/btn0"
+        app:layout_constraintBottom_toTopOf="@id/btn_point"
         app:layout_constraintEnd_toStartOf="@id/btn3"
         app:layout_constraintStart_toEndOf="@id/btn1"
         app:layout_constraintTop_toBottomOf="@id/btn5" />
@@ -200,8 +201,8 @@
         android:layout_height="0dp"
         android:onClick="onNumberButtonClicked"
         android:text="@string/value_3"
-        app:layout_constraintBottom_toTopOf="@id/btn_point"
-        app:layout_constraintEnd_toEndOf="@id/btnsubtraction"
+        app:layout_constraintBottom_toTopOf="@id/btnEqual"
+        app:layout_constraintEnd_toStartOf="@id/btnaddition"
         app:layout_constraintStart_toEndOf="@id/btn2"
         app:layout_constraintTop_toBottomOf="@id/btn6" />
 
@@ -214,7 +215,7 @@
         android:onClick="onOperationButtonClicked"
         app:layout_constraintBottom_toTopOf="@id/btnaddition"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btn3"
+        app:layout_constraintStart_toEndOf="@id/btn6"
         app:layout_constraintTop_toBottomOf="@id/btnmultiplication" />
     <!--endregion-->
 
@@ -227,7 +228,7 @@
         android:text="@string/value_0"
         android:onClick="onNumberButtonClicked"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/btn2"
+        app:layout_constraintEnd_toStartOf="@id/btn3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn2" />
 
@@ -238,7 +239,7 @@
         android:layout_height="0dp"
         android:text="@string/point"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/btnaddition"
+        app:layout_constraintEnd_toStartOf="@id/btnEqual"
         app:layout_constraintStart_toEndOf="@id/btn0"
         app:layout_constraintTop_toBottomOf="@id/btn3" />
 
@@ -249,9 +250,9 @@
         android:layout_height="0dp"
         android:text="@string/addition"
         android:onClick="onOperationButtonClicked"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btnEqual"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btn_point"
+        app:layout_constraintStart_toEndOf="@id/btn3"
         app:layout_constraintTop_toBottomOf="@id/btnsubtraction" />
     <!--endregion-->
 

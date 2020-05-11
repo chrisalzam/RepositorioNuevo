@@ -15,7 +15,7 @@
     <string translatable="false" name="value_0">0</string>
     <string translatable="false" name="point">.</string>
     <string translatable="false" name="ac">AC</string>
-    <string translatable="false" name="plusmin">+/-</string>
+    <string translatable="false" name="equal">=</string>
     <string translatable="false" name="percentage">%</string>
     <string translatable="false" name="squareroot">√</string>
     <string translatable="false" name="division">/</string>

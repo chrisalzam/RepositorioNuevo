@@ -2,4 +2,6 @@
 <resources>
     <string name="app_name">Hola Mundo</string>
     <string name="hi">Hola</string>
+    <string name="implicit_intent_button">Implicit Intent</string>
+    <string name="make_phone_call_button">Hacer llamada</string>
 </resources>

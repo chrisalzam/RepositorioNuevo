@@ -23,4 +23,6 @@
     <string translatable="false" name="subtraction">-</string>
     <string translatable="false" name="addition">+</string>
     <string name="activity_for_result_button" translatable="false">Activity for result</string>
+    <string name="implicit_intent_button">Implicit Intent</string>
+    <string name="make_phone_call_button">Make Phone Call</string>
 </resources>

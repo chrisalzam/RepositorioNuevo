@@ -37,4 +37,17 @@
         android:text="@string/activity_for_result_button"
         android:onClick="activityForResultButtonClick"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/implicit_intent_button"
+        android:onClick="implicitIntentButtonClick"/>
+
+    <Button
+        android:id="@+id/btnMakePhoneCall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/make_phone_call_button"
+        android:onClick="makePhoneCallButtonClick"/>
+
 </LinearLayout>

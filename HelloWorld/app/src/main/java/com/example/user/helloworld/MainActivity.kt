@@ -1,12 +1,18 @@
 package com.example.user.helloworld
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import timber.log.Timber
+
+const val CALCULATOR_FIRST_VALUE = 100
+const val CALCULATOR_KEY = "calculator-key"
+const val CALCULATOR_SECOND_KEY = "calculator-second-key"
+const val CALCULATOR_BUNDLE_KEY = "calculator-bundle-key"
+
+const val PERSON_KEY = "person-key"
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,6 +24,10 @@ class MainActivity : AppCompatActivity() {
     fun calculatorButtonClick(view: View) {
         Timber.d("MainActivity_TAG: calculatorButtonClick: ")
         val intent = Intent(this, CalculatorActivity::class.java)
+        intent.putExtra(CALCULATOR_SECOND_KEY, Bundle().apply {
+            putInt(CALCULATOR_KEY, CALCULATOR_FIRST_VALUE)
+            putString(CALCULATOR_BUNDLE_KEY, "Calculator")
+        })
         startActivity(intent)
     }
 
@@ -44,12 +54,9 @@ class MainActivity : AppCompatActivity() {
         startActivity(shareIntent)
     }
 
-    @SuppressLint("MissingPermission")
     fun makePhoneCallButtonClick(view: View) {
         Timber.d("MainActivity_TAG: makePhoneCallButtonClick: ")
         checkPermissions()
-        val intent = Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "8120142536"))
-        startActivity(intent)
     }
 
     private fun checkPermissions() {
@@ -61,6 +68,9 @@ class MainActivity : AppCompatActivity() {
             Timber.d("MainActivity_TAG: checkPermissions: permissionCode: $permissionCode, permissionGranted: $permissionGranted")
             if (!permissionGranted) {
                 checkSelfPermission(PermissionManager.Permissions.PHONE_CALL.toString())
+            } else {
+                val intent = Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "8120142536"))
+                startActivity(intent)
             }
         }
     }
@@ -73,5 +83,21 @@ class MainActivity : AppCompatActivity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         Timber.d("MainActivity_TAG: onRequestPermissionsResult: ")
         makePhoneCallButtonClick(findViewById(R.id.btnMakePhoneCall))
+    }
+
+    fun pacelableClick(view: View) {}
+
+    fun showPersonDetailsClick(view: View) {
+        Timber.d("MainActivity_TAG: showPersonDetailsClick: ")
+        val person = Person().apply {
+            name = "Christian"
+            age = "30 years"
+            position = "Teacher"
+        }
+
+        val intent = Intent(this, PersonDetailsActivity::class.java)
+        intent.putExtra(PERSON_KEY, person)
+
+        startActivity(intent)
     }
 }

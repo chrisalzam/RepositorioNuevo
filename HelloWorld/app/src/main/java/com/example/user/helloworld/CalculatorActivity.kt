@@ -9,13 +9,19 @@ import timber.log.Timber
 import kotlin.math.sqrt
 
 class CalculatorActivity : AppCompatActivity() {
-    lateinit var calculator: Calculator
+    private lateinit var calculator: Calculator
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calculator_constraint_layout)
 
         calculator = Calculator()
+
+        val bundle = intent.getBundleExtra(CALCULATOR_SECOND_KEY)
+        calculator.firstValue = bundle?.getInt(CALCULATOR_KEY, 0).toString()
+        showResult(calculator.firstValue)
+
+        title = bundle?.getString(CALCULATOR_BUNDLE_KEY)
     }
 
     fun onNumberButtonClicked(view: View) {

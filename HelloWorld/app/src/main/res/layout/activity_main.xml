@@ -50,4 +50,16 @@
         android:text="@string/make_phone_call_button"
         android:onClick="makePhoneCallButtonClick"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Parcelable Class"
+        android:onClick="pacelableClick"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show Person Details"
+        android:onClick="showPersonDetailsClick"/>
+
 </LinearLayout>

@@ -22,4 +22,5 @@
     <string translatable="false" name="multiplication">*</string>
     <string translatable="false" name="subtraction">-</string>
     <string translatable="false" name="addition">+</string>
+    <string name="activity_for_result_button" translatable="false">Activity for result</string>
 </resources>

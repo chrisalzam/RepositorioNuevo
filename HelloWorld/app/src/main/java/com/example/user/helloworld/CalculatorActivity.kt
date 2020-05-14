@@ -59,4 +59,16 @@ class CalculatorActivity : AppCompatActivity() {
         val tvScreen = findViewById<TextView>(R.id.tvScreen)
         tvScreen.text = result
     }
+
+    fun onEqualButtonClicked(view: View) {
+        if(calculator.firstValue == "") {
+            calculator.firstValue = calculator.secondValue
+            val result = calculator.doOperation(calculator.currentOperation.code)
+            showResult(result)
+        }
+        else {
+            val result = calculator.doOperation(calculator.currentOperation.code)
+            showResult(result)
+        }
+    }
 }

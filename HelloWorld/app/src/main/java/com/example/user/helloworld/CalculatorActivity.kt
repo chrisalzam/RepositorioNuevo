@@ -44,7 +44,18 @@ class CalculatorActivity : AppCompatActivity() {
     }
 
     fun onDecimalButtonClicked(view: View) {
-        Timber.d("CalculatorActivity_TAG: onDecimalButtonClicked: ${(view as Button).text}")
+        val value = (view as Button).text.toString()
+
+
+        if (calculator.firstValue != "0")
+            if(calculator.firstValue.contains('.'))
+            calculator.firstValue=calculator.firstValue
+            else
+                calculator.firstValue += value
+        else
+            calculator.firstValue = "0."
+
+        showResult(calculator.firstValue)
     }
 
     fun onACButtonClicked(view: View) {

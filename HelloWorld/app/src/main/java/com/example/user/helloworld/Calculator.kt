@@ -29,10 +29,11 @@ class Calculator {
         }
 
         currentOperation = OperationType.getOperationTypeByCode(code)
-
         secondValue = firstValue
         firstValue = ""
 
         return secondValue
     }
+
+
 }

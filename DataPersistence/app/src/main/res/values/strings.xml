@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">DataPersistence</string>
+    <string name="write_something_to_store_hint">Write Something To Store</string>
+    <string name="save_into_shared_preferences_btn">Save into Shared Preferences</string>
+    <string name="no_stored_data">No stored data</string>
+    <string name="save_into_file_btn">Save into file</string>
+    <string name="save_into_room_database_btn">Save Into Room Database</string>
 </resources>

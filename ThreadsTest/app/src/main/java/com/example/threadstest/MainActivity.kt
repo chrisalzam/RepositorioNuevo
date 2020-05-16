@@ -4,6 +4,13 @@ import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.CompletableObserver
+import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.core.Observer
+import io.reactivex.rxjava3.core.SingleObserver
+import io.reactivex.rxjava3.disposables.Disposable
+import io.reactivex.rxjava3.schedulers.Schedulers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -40,6 +47,8 @@ class MainActivity : AppCompatActivity() {
         whoIsFirst { result ->
             Timber.d("MainActivity_TAG: onCreate: $result")
         }
+
+        rxJavaTest()
     }
 
     private fun threadTest() {
@@ -92,5 +101,33 @@ class MainActivity : AppCompatActivity() {
             place++
             myOnDoneFunction("CoRoutines Finished: $place")
         }
+    }
+
+    private fun rxJavaTest() {
+        Timber.d("MainActivity_TAG: rxJavaTest: ")
+        Observable.just("one", "two", "three", "four", "five")
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doAfterNext {
+                Timber.d("MainActivity_TAG: rxJavaTest: doAfterNext: $it")
+            }
+            .skip(3)
+            .subscribe(object: Observer<String>{
+                override fun onComplete() {
+                    Timber.d("MainActivity_TAG: onComplete: ")
+                }
+
+                override fun onSubscribe(d: Disposable?) {
+                    Timber.d("MainActivity_TAG: onSubscribe: ")
+                }
+
+                override fun onNext(t: String?) {
+                    Timber.d("MainActivity_TAG: onNext: $t")
+                }
+
+                override fun onError(e: Throwable?) {
+                    Timber.d("MainActivity_TAG: onError: ")
+                }
+            })
     }
 }

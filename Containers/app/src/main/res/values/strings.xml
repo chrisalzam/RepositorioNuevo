@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Containers</string>
     <string name="go_to_recycler_view_button">Go To Recycler View</string>
+    <string name="os_image_content">OS Image</string>
 </resources>

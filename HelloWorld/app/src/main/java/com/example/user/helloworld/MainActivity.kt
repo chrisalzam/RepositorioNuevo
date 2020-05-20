@@ -7,7 +7,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import timber.log.Timber
 
-const val CALCULATOR_FIRST_VALUE = 100
+const val CALCULATOR_FIRST_VALUE = 101
 const val CALCULATOR_KEY = "calculator-key"
 const val CALCULATOR_SECOND_KEY = "calculator-second-key"
 const val CALCULATOR_BUNDLE_KEY = "calculator-bundle-key"
@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, CalculatorActivity::class.java)
         intent.putExtra(CALCULATOR_SECOND_KEY, Bundle().apply {
             putInt(CALCULATOR_KEY, CALCULATOR_FIRST_VALUE)
-            putString(CALCULATOR_BUNDLE_KEY, "Calculator")
+            putString(CALCULATOR_BUNDLE_KEY, "SINCE MAIN ACTIVITY")
         })
         startActivity(intent)
     }
@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
     fun activityForResultButtonClick(view: View) {
         Timber.d("MainActivity_TAG: activityForResultButtonClick: ")
         val intent = Intent(this, CalculatorActivity::class.java)
-        startActivityForResult(intent, 1000)
+        startActivityForResult(intent,1000)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -85,14 +85,14 @@ class MainActivity : AppCompatActivity() {
         makePhoneCallButtonClick(findViewById(R.id.btnMakePhoneCall))
     }
 
-    fun pacelableClick(view: View) {}
+    fun parcelableClick(view: View) {}
 
     fun showPersonDetailsClick(view: View) {
         Timber.d("MainActivity_TAG: showPersonDetailsClick: ")
         val person = Person().apply {
             name = "Christian"
             age = "30 years"
-            position = "Teacher"
+            position = "Manager"
         }
 
         val intent = Intent(this, PersonDetailsActivity::class.java)

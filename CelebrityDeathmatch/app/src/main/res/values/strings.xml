@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">CelebrityDeathmatch</string>
     <string name="celebrity_image_content">Celebrity Image</string>
+    <string name="position">Position</string>
+    <string name="name">Name</string>
+    <string name="celebrity_image">Celebrity Image</string>
 </resources>

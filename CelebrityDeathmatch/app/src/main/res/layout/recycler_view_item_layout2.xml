@@ -2,27 +2,28 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:padding="20dp">
 
     <TextView
         android:id="@+id/tvPosition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Position"
-        android:gravity="left"
+        android:gravity="start"
+        android:text="@string/position"
         android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Name"
         android:gravity="center"
+        android:text="@string/name"
         android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@id/tvPosition"
+        app:layout_constraintEnd_toStartOf="@id/tvPosition"
+        app:layout_constraintStart_toEndOf="@id/ivImg"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
@@ -30,10 +31,10 @@
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
-        android:contentDescription="Celebrity Image"
+        android:contentDescription="@string/celebrity_image"
         android:scaleType="fitXY"
         android:src="@drawable/nophoto"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 

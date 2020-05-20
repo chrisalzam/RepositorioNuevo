@@ -21,9 +21,9 @@ class MainActivity : AppCompatActivity() {
         val rv = findViewById<RecyclerView>(R.id.rvCelebrity)
 
         myAdapter = MyRecyclerViewAdapter {
-            //Log.d("RecyclerViewActivity_TAG", "fillRecyclerView: onItemClick: $it")
+            Log.d("MainActivity_TAG", "fillRecyclerView: onItemClick: $it")
         }
-        //myAdapter.itemList = MyData.values().toList()
+        myAdapter.itemList = MyData.values()
 
 
         rv.adapter = myAdapter

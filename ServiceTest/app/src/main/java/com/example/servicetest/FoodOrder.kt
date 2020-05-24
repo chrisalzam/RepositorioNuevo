@@ -1,7 +1,5 @@
 package com.example.servicetest
 
-import org.json.JSONObject
-
 class FoodOrder private constructor(
     private val bread: String?,
     private val condiments: String?,

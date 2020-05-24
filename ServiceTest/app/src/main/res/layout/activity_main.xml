@@ -23,13 +23,36 @@
         android:text="@string/stop_normal_service" />
     <!--endregion-->
 
-    <!--region Normal Service-->
+    <!--region Intent Service-->
     <Button
         android:id="@+id/btnStartIntentService"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onServicesButtonClick"
         android:text="@string/start_intent_service" />
+    <!--endregion-->
+
+    <!--region Bound Service-->
+    <Button
+        android:id="@+id/btnBoundService"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onBoundService"
+        android:text="@string/bound_to_service" />
+
+    <Button
+        android:id="@+id/btnGetData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onBoundService"
+        android:text="@string/get_data_from_service" />
+
+    <Button
+        android:id="@+id/btnUnbind"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onBoundService"
+        android:text="@string/unbind_from_service" />
     <!--endregion-->
 
 </LinearLayout>

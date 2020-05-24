@@ -3,4 +3,7 @@
     <string name="start_normal_service">START NORMAL SERVICE</string>
     <string name="stop_normal_service">STOP NORMAL SERVICE</string>
     <string name="start_intent_service">START INTENT SERVICE</string>
+    <string name="bound_to_service">BOUND TO SERVICE</string>
+    <string name="get_data_from_service">GET DATA FROM SERVICE</string>
+    <string name="unbind_from_service">UNBIND FROM SERVICE</string>
 </resources>

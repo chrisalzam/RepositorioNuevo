@@ -34,6 +34,17 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val foodOrder = FoodOrder.Builder()
+            .bread("Regular")
+            .condiments("Pickles, Salt, BBQ")
+            .meat("Western Bacon")
+            .build()
+
+        Log.d("MainActivity_TAG", "onCreate: $foodOrder")
+        foodOrder.addTax()
+        Log.d("MainActivity_TAG", "onCreate: $foodOrder")
+
     }
 
     fun onServicesButtonClick(view: View) {

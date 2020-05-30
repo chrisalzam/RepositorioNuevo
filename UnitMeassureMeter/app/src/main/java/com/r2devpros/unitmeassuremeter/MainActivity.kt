@@ -37,32 +37,38 @@ class MainActivity : AppCompatActivity() {
         skSize?.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 Log.d("MainActivity_TAG", "onProgressChanged: ")
+                etSize?.setText(progress.toString())
+                etSize?.setSelection(seekBar?.progress.toString().length)
 
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
                 Log.d("MainActivity_TAG", "onStartTrackingTouch: ")
+
+
             }
 
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
                 Log.d("MainActivity_TAG", "onStopTrackingTouch: ${seekBar?.progress.toString()}")
-                val progressval = seekBar?.progress.toString()
-                etSize?.setText(progressval)
+                etSize?.setText(seekBar?.progress.toString())
 
                 //default usa SP
-                tvResult?.textSize = progressval.toFloat()
+                tvResult?.textSize = seekBar?.progress.toString().toFloat()
 //                tvResult?.setTextSize(TypedValue.COMPLEX_UNIT_PX, 0f)
+                etSize?.setSelection(seekBar?.progress.toString().length)
             }
         })
 
 
         etSize?.addTextChangedListener(object : TextWatcher {
+            var value = ""
             override fun afterTextChanged(p0: Editable?) {
                 Log.d("MainActivity_TAG", "afterTextChanged: $p0")
-                skSize?.progress = p0.toString().toInt()
-                tvResult?.textSize = p0.toString().toFloat()
-                if (p0.toString() == "")
-                    Log.d("MainActivity_TAG", "etSize value is null")
+                if (p0.toString() != "") {
+                    value = p0.toString()
+                    skSize?.progress = value.toInt()
+                    tvResult?.textSize = value.toFloat()
+                }
             }
 
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {

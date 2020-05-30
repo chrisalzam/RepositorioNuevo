@@ -4,44 +4,105 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/Blackground"
     android:padding="20dp"
     tools:context=".MainActivity">
 
-    <SeekBar
-        android:id="@+id/skSize"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/tvTitle"
+        style="@style/TitleStyle"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:max="100"
+        android:gravity="center"
+        android:text="@string/unit_measures_meter_title"
+        app:layout_constraintEnd_toStartOf="@id/view_divider"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/tvTextSize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_siz_Text"
+        android:textColor="@color/AllWhite"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
     <EditText
         android:id="@+id/etSize"
-        android:layout_width="0dp"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:autofillHints=""
+        android:background="#FFFFFF"
         android:hint="@string/text_size_hint"
         android:inputType="number"
-        app:layout_constraintEnd_toStartOf="@id/tvSizeType"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/skSize" />
+        android:maxLength="2"
+        app:layout_constraintStart_toEndOf="@id/tvTextSize"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
 
     <TextView
         android:id="@+id/tvSizeType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingLeft="15dp"
         android:text="@string/sp"
-        app:layout_constraintBottom_toBottomOf="@id/etSize"
+        android:textColor="@color/AllWhite"
+        app:layout_constraintStart_toEndOf="@id/etSize"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+    <SeekBar
+        android:id="@+id/skSize"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:max="100"
+        android:paddingTop="15dp"
+        android:progressBackgroundTint="@color/AllWhite"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTextSize" />
+
+    <View
+        android:id="@+id/view_divider"
+        style="@style/Divider"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tvTitle2"
+        app:layout_constraintStart_toEndOf="@id/tvTitle"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvTitle2"
+        style="@style/TitleStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/unit_measures_test_title"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/etSize" />
+        app:layout_constraintStart_toEndOf="@id/view_divider"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvResult"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="@string/result"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etSize" />
+        android:textColor="@color/AllWhite"
+        android:paddingLeft="15dp"
+        app:layout_constraintBottom_toTopOf="@id/btn_Text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@id/view_divider"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle2" />
+
+    <Button
+        android:id="@+id/btn_Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/view_divider"
+        app:layout_constraintTop_toBottomOf="@id/tvResult" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

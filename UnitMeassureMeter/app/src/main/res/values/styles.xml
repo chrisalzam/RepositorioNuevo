@@ -7,5 +7,14 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <style name="TitleStyle">
+        <item name="android:textColor">@color/AllWhite</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+    <style name="Divider">
+        <item name="android:layout_width">10dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/AllWhite</item>
+    </style>
 
 </resources>

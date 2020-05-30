@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
     private var etButtonSize: EditText? = null
     private var tvResult: TextView? = null
     private var btnText: Button? = null
+    private var spTextType: Spinner? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +36,18 @@ class MainActivity : AppCompatActivity() {
         skSize = findViewById(R.id.skSize)
         etSize = findViewById(R.id.etSize)
         tvResult = findViewById(R.id.tvResult)
+        spTextType = findViewById(R.id.spSizeType)
+
+        ArrayAdapter.createFromResource(
+            this,
+            R.array.size_type_array,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            // Specify the layout to use when the list of choices appears
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_item)
+            // Apply the adapter to the spinner
+            spTextType?.adapter = adapter
+        }
 
         skSize?.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {

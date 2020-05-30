@@ -40,16 +40,24 @@
         app:layout_constraintStart_toEndOf="@id/tvTextSize"
         app:layout_constraintTop_toBottomOf="@id/tvTitle" />
 
-    <TextView
-        android:id="@+id/tvSizeType"
+    <!--    <TextView-->
+    <!--        android:id="@+id/tvSizeType"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:paddingStart="15dp"-->
+    <!--        android:paddingEnd="0dp"-->
+    <!--        android:text="@string/sp"-->
+    <!--        android:textColor="@color/AllWhite"-->
+    <!--        app:layout_constraintStart_toEndOf="@id/etSize"-->
+    <!--        app:layout_constraintTop_toBottomOf="@id/tvTitle" />-->
+
+    <Spinner
+        android:id="@+id/spSizeType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingStart="15dp"
-        android:paddingEnd="0dp"
-        android:text="@string/sp"
-        android:textColor="@color/AllWhite"
-        app:layout_constraintStart_toEndOf="@id/etSize"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:layout_constraintBottom_toBottomOf="@id/etSize"
+        app:layout_constraintStart_toEndOf="@id/etSize" />
 
     <SeekBar
         android:id="@+id/skSize"

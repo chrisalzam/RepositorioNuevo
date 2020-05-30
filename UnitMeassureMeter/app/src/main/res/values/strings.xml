@@ -6,6 +6,11 @@
     <string name="text_siz_Text">Text Size</string>
     <string name="unit_measures_meter_title">Unit Measures - Meter</string>
     <string name="unit_measures_test_title">Unit Measures - Test</string>
-    <string name="button_text">Button Size</string>
-    <string name="button_size">Button Size</string>
+    <string name="button_text">Button Size:</string>
+    <string name="button_size">Button Size:</string>
+    <string-array name="size_type_array">
+        <item>sp</item>
+        <item>dp</item>
+    </string-array>
+
 </resources>

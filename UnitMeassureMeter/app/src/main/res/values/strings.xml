@@ -7,4 +7,5 @@
     <string name="unit_measures_meter_title">Unit Measures - Meter</string>
     <string name="unit_measures_test_title">Unit Measures - Test</string>
     <string name="button_text">Button Size</string>
+    <string name="button_size">Button Size</string>
 </resources>

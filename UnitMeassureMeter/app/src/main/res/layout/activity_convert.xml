@@ -171,7 +171,6 @@
         app:layout_constraintTop_toTopOf="@id/etPxItemW" />
 
     <EditText
-        android:enabled="false"
         android:inputType="number"
         android:autofillHints="Item Width DP"
         android:id="@+id/etDpItemW"
@@ -220,7 +219,6 @@
 
     <EditText
         android:autofillHints="Height Item DP"
-        android:enabled="false"
         android:inputType="number"
         android:id="@+id/etDpItemH"
         android:layout_width="100dp"

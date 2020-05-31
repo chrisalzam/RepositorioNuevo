@@ -63,16 +63,16 @@ class ConvertActivity : AppCompatActivity() {
             var widthItem = 0
             override fun afterTextChanged(p0: Editable?) {
                 Log.d("ConvertActivity_TAG", "afterTextChangedWidth: $p0")
-                val scrdpi = dpi ?: 0.0
-                val widthPXlocal = widthPX ?: 0.0
-                if (p0.toString() != "" && etWidthNew?.text.toString() != "") {
-                    val widthNew = etWidthNew?.text.toString().toInt()
-                    widthItem = p0.toString().toInt()
-                    val ratio = widthPXlocal / widthNew
-                    val newWidthPX = widthItem / ratio
-                    val newItemWidthDP = newWidthPX * 160 / scrdpi
 
-                    etItemWidthDP?.setText(newItemWidthDP.toString())
+                val widthNew = etWidthNew?.text.toString().toDouble()
+                val widthDPlocal = widthDP ?: 0.0
+
+                if (p0.toString() != "" && etWidthNew?.text.toString() != "") {
+
+                    val heightItem = p0.toString().toInt()
+                    val newItemHeightDP = heightItem * widthDPlocal / widthNew
+
+                    etItemWidthDP?.setText(newItemHeightDP.toString())
                 }
             }
 
@@ -89,14 +89,12 @@ class ConvertActivity : AppCompatActivity() {
             override fun afterTextChanged(p0: Editable?) {
                 Log.d("ConvertActivity_TAG", "afterTextChangedHeight: $p0")
 
-                val scrdpi = dpi ?: 0.0
-                val heightPXlocal = heightPX ?: 0.0
+                val heightNew = etHeightNew?.text.toString().toDouble()
+                val heightDPlocal = heightDP ?: 0.0
                 if (p0.toString() != "" && etHeightNew?.text.toString() != "") {
-                    val widthNew = etHeightNew?.text.toString().toInt()
+
                     val heightItem = p0.toString().toInt()
-                    val ratio = heightPXlocal / widthNew
-                    val newHeightPX = heightItem / ratio
-                    val newItemHeightDP = newHeightPX * 160 / scrdpi
+                    val newItemHeightDP = heightItem * heightDPlocal / heightNew
 
 
                     etItemHeightDP?.setText(newItemHeightDP.toString())

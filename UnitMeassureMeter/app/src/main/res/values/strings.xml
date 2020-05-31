@@ -20,6 +20,7 @@
     <string name="tv_pixel_item_width">Pixel Item Width:</string>
     <string name="tv_equal">=</string>
     <string name="tv_pixel_item_height">Pixel Item Height</string>
+    <string name="tv_unit_measures_meter">Unit Measures - Meter</string>
     <string-array name="size_type_array">
         <item>sp</item>
         <item>dp</item>

@@ -3,11 +3,14 @@
     <string name="result">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat</string>
     <string name="text_size_hint">Text Size</string>
     <string name="sp">sp</string>
-    <string name="text_siz_Text">Text Size</string>
+    <string name="text_siz_Text">Text Size:</string>
     <string name="unit_measures_meter_title">Unit Measures - Meter</string>
     <string name="unit_measures_test_title">Unit Measures - Test</string>
     <string name="button_text">Button Size:</string>
     <string name="button_size">Button Size:</string>
+    <string name="total_width_text">Total Width:</string>
+    <string name="total_height_text">Total Height</string>
+    <string name="btn_convert">Convert</string>
     <string-array name="size_type_array">
         <item>sp</item>
         <item>dp</item>

@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ConvertActivity"
+    android:background="@color/Blackground"
+    android:paddingLeft="15dp">
+
+
+    <TextView
+        android:id="@+id/tvTitleConverter"
+        style="@style/TitleStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="45dp"
+        android:paddingBottom="45dp"
+        android:text="Unit Measures - Converter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvDeviceWidth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingEnd="5dp"
+        android:text="Device Width:"
+        android:textColor="@color/AllWhite"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitleConverter" />
+
+    <TextView
+        android:id="@+id/tvWidthPX"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0px"
+        android:textColor="@color/AllWhite"
+        app:layout_constraintEnd_toStartOf="@id/tvWidthDP"
+        app:layout_constraintStart_toEndOf="@id/tvDeviceWidth"
+        app:layout_constraintTop_toBottomOf="@id/tvTitleConverter" />
+
+    <TextView
+        android:id="@+id/tvWidthDP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0dp"
+        android:textColor="@color/AllWhite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tvWidthPX"
+        app:layout_constraintTop_toBottomOf="@id/tvTitleConverter" />
+
+    <TextView
+        android:id="@+id/tvDeviceHeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Device Height:"
+        android:textColor="@color/AllWhite"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvDeviceWidth" />
+
+    <TextView
+        android:id="@+id/tvHeightPX"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0px"
+        android:textColor="@color/AllWhite"
+        app:layout_constraintEnd_toStartOf="@id/tvWidthDP"
+        app:layout_constraintStart_toEndOf="@id/tvDeviceWidth"
+        app:layout_constraintTop_toBottomOf="@id/tvWidthPX" />
+
+    <TextView
+        android:id="@+id/tvHeightDP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0dp"
+        android:textColor="@color/AllWhite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tvWidthPX"
+        app:layout_constraintTop_toBottomOf="@id/tvWidthDP" />
+
+    <TextView
+        android:id="@+id/tvConversion"
+        style="@style/TitleStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="45dp"
+        android:text="Conversion"
+        android:textColor="@color/AllWhite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvDeviceHeight" />
+
+    <TextView
+        android:id="@+id/tvOtherScreen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="25dp"
+        android:text="Other Screen PX Size:"
+        android:textColor="@color/AllWhite"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvConversion" />
+
+    <EditText
+        android:id="@+id/etWidthPX"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="25dp"
+        android:background="@color/AllWhite"
+        android:inputType="number"
+        android:textAlignment="textEnd"
+        app:layout_constraintBottom_toBottomOf="@id/tvOtherScreen"
+        app:layout_constraintStart_toEndOf="@id/tvOtherScreen"
+        app:layout_constraintTop_toBottomOf="@id/tvConversion" />
+
+    <TextView
+        android:id="@+id/tvX"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="X"
+        android:textColor="@color/AllWhite"
+        app:layout_constraintEnd_toStartOf="@id/etHeightPX"
+        app:layout_constraintStart_toEndOf="@id/etWidthPX"
+        app:layout_constraintTop_toTopOf="@id/etWidthPX" />
+
+    <EditText
+        android:id="@+id/etHeightPX"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="25dp"
+        android:background="@color/AllWhite"
+        android:textAlignment="textEnd"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="@id/tvOtherScreen"
+        app:layout_constraintStart_toEndOf="@id/etWidthPX"
+        app:layout_constraintTop_toBottomOf="@id/tvConversion" />
+
+    <TextView
+        android:id="@+id/tvPxItemW"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="25dp"
+        android:text="Pixel Item Width:"
+        android:textColor="@color/AllWhite"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvOtherScreen" />
+
+    <EditText
+        android:id="@+id/etPxItemW"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:background="@color/AllWhite"
+        android:inputType="number"
+        android:textAlignment="textEnd"
+        app:layout_constraintBottom_toBottomOf="@id/tvPxItemW"
+        app:layout_constraintStart_toStartOf="@id/etWidthPX"
+        app:layout_constraintTop_toBottomOf="@id/etWidthPX" />
+
+    <TextView
+        android:id="@+id/tvEq"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="="
+        android:textColor="@color/AllWhite"
+        app:layout_constraintEnd_toStartOf="@id/etDpItemW"
+        app:layout_constraintStart_toEndOf="@id/etPxItemW"
+        app:layout_constraintTop_toTopOf="@id/etPxItemW" />
+
+    <EditText
+        android:id="@+id/etDpItemW"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:background="@color/AllWhite"
+
+        android:textAlignment="textEnd"
+        app:layout_constraintBottom_toBottomOf="@id/tvPxItemW"
+        app:layout_constraintStart_toStartOf="@id/etHeightPX"
+        app:layout_constraintTop_toBottomOf="@id/etHeightPX" />
+
+    <TextView
+        android:id="@+id/tvPxItemH"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="25dp"
+        android:text="Pixel Item Height"
+        android:textColor="@color/AllWhite"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvPxItemW" />
+
+    <EditText
+        android:id="@+id/etPxItemH"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:background="@color/AllWhite"
+        android:inputType="number"
+        android:textAlignment="textEnd"
+        app:layout_constraintBottom_toBottomOf="@id/tvPxItemH"
+        app:layout_constraintStart_toStartOf="@id/etPxItemW"
+        app:layout_constraintTop_toBottomOf="@id/etPxItemW" />
+
+    <TextView
+        android:id="@+id/tvEq2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="="
+        android:textColor="@color/AllWhite"
+        app:layout_constraintEnd_toStartOf="@id/etDpItemH"
+        app:layout_constraintStart_toEndOf="@id/etPxItemH"
+        app:layout_constraintTop_toTopOf="@id/etPxItemH" />
+
+    <EditText
+        android:id="@+id/etDpItemH"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:background="@color/AllWhite"
+        android:textAlignment="textEnd"
+        app:layout_constraintBottom_toBottomOf="@id/tvPxItemH"
+        app:layout_constraintStart_toStartOf="@id/etDpItemW"
+        app:layout_constraintTop_toBottomOf="@id/etDpItemW" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

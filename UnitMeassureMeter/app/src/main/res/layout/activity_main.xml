@@ -20,13 +20,90 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvTextSize"
+        android:id="@+id/tvTotalW"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/text_siz_Text"
+        android:paddingTop="35dp"
+        android:paddingEnd="10dp"
+        android:text="@string/total_width_text"
         android:textColor="@color/AllWhite"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+    <TextView
+        android:id="@+id/tvTotalW_ValuePX"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:paddingTop="35dp"
+        android:textColor="@color/AllWhite"
+        app:layout_constraintStart_toEndOf="@id/tvTotalW"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+    <TextView
+        android:id="@+id/tvTotalW_ValueDP"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:paddingTop="35dp"
+        android:text="0 dp"
+        android:textColor="@color/AllWhite"
+        app:layout_constraintStart_toEndOf="@id/tvTotalW_ValuePX"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+    <TextView
+        android:id="@+id/tvTotalH"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingEnd="10dp"
+        android:paddingBottom="35dp"
+        android:text="@string/total_height_text"
+        android:textColor="@color/AllWhite"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTotalW" />
+
+    <TextView
+        android:id="@+id/tvTotalH_ValuePX"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:paddingBottom="35dp"
+        android:text="0 px"
+        android:textColor="@color/AllWhite"
+        app:layout_constraintStart_toEndOf="@id/tvTotalH"
+        app:layout_constraintTop_toBottomOf="@id/tvTotalW_ValuePX" />
+
+    <TextView
+        android:id="@+id/tvTotalH_ValueDP"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:paddingBottom="35dp"
+        android:text="0 dp"
+        android:textColor="@color/AllWhite"
+        app:layout_constraintStart_toEndOf="@id/tvTotalW_ValuePX"
+        app:layout_constraintTop_toBottomOf="@id/tvTotalW_ValueDP" />
+
+    <Button
+        android:id="@+id/btn_Convert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_convert"
+        android:onClick="convertButtonClick"
+        app:layout_constraintBottom_toBottomOf="@id/tvTotalH_ValueDP"
+        app:layout_constraintEnd_toStartOf="@id/view_divider"
+        app:layout_constraintStart_toEndOf="@id/tvTotalW_ValueDP"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+    <TextView
+        android:id="@+id/tvTextSize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingEnd="10dp"
+        android:text="@string/text_siz_Text"
+        android:textColor="@color/AllWhite"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTotalH" />
 
     <EditText
         android:id="@+id/etSize"
@@ -38,7 +115,7 @@
         android:inputType="number"
         android:maxLength="2"
         app:layout_constraintStart_toEndOf="@id/tvTextSize"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+        app:layout_constraintTop_toBottomOf="@id/tvTotalH_ValuePX" />
 
     <!--    <TextView-->
     <!--        android:id="@+id/tvSizeType"-->
@@ -55,9 +132,9 @@
         android:id="@+id/spSizeType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle"
         app:layout_constraintBottom_toBottomOf="@id/etSize"
-        app:layout_constraintStart_toEndOf="@id/etSize" />
+        app:layout_constraintStart_toEndOf="@id/etSize"
+        app:layout_constraintTop_toBottomOf="@id/tvTotalH" />
 
     <SeekBar
         android:id="@+id/skSize"
@@ -73,6 +150,7 @@
         android:id="@+id/tvButtonSize"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingEnd="10dp"
         android:text="@string/button_size"
         android:textColor="@color/AllWhite"
         app:layout_constraintStart_toStartOf="parent"

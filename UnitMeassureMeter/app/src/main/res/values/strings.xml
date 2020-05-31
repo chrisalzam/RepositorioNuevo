@@ -11,6 +11,15 @@
     <string name="total_width_text">Total Width:</string>
     <string name="total_height_text">Total Height</string>
     <string name="btn_convert">Convert</string>
+    <string name="unit_measures_converter">Unit Measures - Converter</string>
+    <string name="device_width">Device Width:</string>
+    <string name="device_height">Device Height:</string>
+    <string name="tv_conversion">Conversion</string>
+    <string name="tv_other_screen">Other Screen PX Size:</string>
+    <string name="tv_x">X</string>
+    <string name="tv_pixel_item_width">Pixel Item Width:</string>
+    <string name="tv_equal">=</string>
+    <string name="tv_pixel_item_height">Pixel Item Height</string>
     <string-array name="size_type_array">
         <item>sp</item>
         <item>dp</item>

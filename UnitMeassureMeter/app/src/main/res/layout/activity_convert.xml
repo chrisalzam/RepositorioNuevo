@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".ConvertActivity"
     android:background="@color/Blackground"
-    android:paddingLeft="15dp">
+    android:layout_marginStart="15dp"
+    tools:ignore="LabelFor" >
 
 
     <TextView
@@ -17,7 +18,7 @@
         android:gravity="center"
         android:paddingTop="45dp"
         android:paddingBottom="45dp"
-        android:text="Unit Measures - Converter"
+        android:text="@string/unit_measures_converter"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,7 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingEnd="5dp"
-        android:text="Device Width:"
+        android:text="@string/device_width"
         android:textColor="@color/AllWhite"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvTitleConverter" />
@@ -35,7 +36,6 @@
         android:id="@+id/tvWidthPX"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="0px"
         android:textColor="@color/AllWhite"
         app:layout_constraintEnd_toStartOf="@id/tvWidthDP"
         app:layout_constraintStart_toEndOf="@id/tvDeviceWidth"
@@ -45,7 +45,6 @@
         android:id="@+id/tvWidthDP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="0dp"
         android:textColor="@color/AllWhite"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/tvWidthPX"
@@ -55,7 +54,7 @@
         android:id="@+id/tvDeviceHeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Device Height:"
+        android:text="@string/device_height"
         android:textColor="@color/AllWhite"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvDeviceWidth" />
@@ -64,7 +63,6 @@
         android:id="@+id/tvHeightPX"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="0px"
         android:textColor="@color/AllWhite"
         app:layout_constraintEnd_toStartOf="@id/tvWidthDP"
         app:layout_constraintStart_toEndOf="@id/tvDeviceWidth"
@@ -74,7 +72,6 @@
         android:id="@+id/tvHeightDP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="0dp"
         android:textColor="@color/AllWhite"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/tvWidthPX"
@@ -86,7 +83,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="45dp"
-        android:text="Conversion"
+        android:text="@string/tv_conversion"
         android:textColor="@color/AllWhite"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -97,7 +94,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="25dp"
-        android:text="Other Screen PX Size:"
+        android:text="@string/tv_other_screen"
         android:textColor="@color/AllWhite"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvConversion" />
@@ -106,11 +103,12 @@
         android:id="@+id/etWidthPX"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="25dp"
         android:background="@color/AllWhite"
         android:inputType="number"
         android:textAlignment="textEnd"
+        android:autofillHints="here is your Width"
         app:layout_constraintBottom_toBottomOf="@id/tvOtherScreen"
         app:layout_constraintStart_toEndOf="@id/tvOtherScreen"
         app:layout_constraintTop_toBottomOf="@id/tvConversion" />
@@ -119,7 +117,7 @@
         android:id="@+id/tvX"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="X"
+        android:text="@string/tv_x"
         android:textColor="@color/AllWhite"
         app:layout_constraintEnd_toStartOf="@id/etHeightPX"
         app:layout_constraintStart_toEndOf="@id/etWidthPX"
@@ -129,11 +127,12 @@
         android:id="@+id/etHeightPX"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="25dp"
         android:background="@color/AllWhite"
         android:textAlignment="textEnd"
         android:inputType="number"
+        android:autofillHints="here is your Height"
         app:layout_constraintBottom_toBottomOf="@id/tvOtherScreen"
         app:layout_constraintStart_toEndOf="@id/etWidthPX"
         app:layout_constraintTop_toBottomOf="@id/tvConversion" />
@@ -143,7 +142,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="25dp"
-        android:text="Pixel Item Width:"
+        android:text="@string/tv_pixel_item_width"
         android:textColor="@color/AllWhite"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvOtherScreen" />
@@ -156,6 +155,7 @@
         android:background="@color/AllWhite"
         android:inputType="number"
         android:textAlignment="textEnd"
+        android:autofillHints="Width Item"
         app:layout_constraintBottom_toBottomOf="@id/tvPxItemW"
         app:layout_constraintStart_toStartOf="@id/etWidthPX"
         app:layout_constraintTop_toBottomOf="@id/etWidthPX" />
@@ -164,13 +164,16 @@
         android:id="@+id/tvEq"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="="
+        android:text="@string/tv_equal"
         android:textColor="@color/AllWhite"
         app:layout_constraintEnd_toStartOf="@id/etDpItemW"
         app:layout_constraintStart_toEndOf="@id/etPxItemW"
         app:layout_constraintTop_toTopOf="@id/etPxItemW" />
 
     <EditText
+        android:enabled="false"
+        android:inputType="number"
+        android:autofillHints="Item Width DP"
         android:id="@+id/etDpItemW"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
@@ -187,12 +190,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="25dp"
-        android:text="Pixel Item Height"
+        android:text="@string/tv_pixel_item_height"
         android:textColor="@color/AllWhite"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvPxItemW" />
 
     <EditText
+        android:autofillHints="Height Item"
         android:id="@+id/etPxItemH"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
@@ -208,13 +212,16 @@
         android:id="@+id/tvEq2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="="
+        android:text="@string/tv_equal"
         android:textColor="@color/AllWhite"
         app:layout_constraintEnd_toStartOf="@id/etDpItemH"
         app:layout_constraintStart_toEndOf="@id/etPxItemH"
         app:layout_constraintTop_toTopOf="@id/etPxItemH" />
 
     <EditText
+        android:autofillHints="Height Item DP"
+        android:enabled="false"
+        android:inputType="number"
         android:id="@+id/etDpItemH"
         android:layout_width="100dp"
         android:layout_height="wrap_content"

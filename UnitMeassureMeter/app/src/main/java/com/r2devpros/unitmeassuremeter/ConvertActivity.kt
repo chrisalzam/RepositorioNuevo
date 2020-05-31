@@ -21,22 +21,22 @@ class ConvertActivity : AppCompatActivity() {
     private var etItemWidthDP: EditText? = null
     private var etItemHeightDP: EditText? = null
 
-    var widthPX = 0.0
-    var heightPX = 0.0
-    var widthDP = 0.0
-    var heightDP = 0.0
-    var dpi = 0.0
+    var widthPX: Double? = 0.0
+    var heightPX: Double? = 0.0
+    var widthDP: Double? = 0.0
+    var heightDP: Double? = 0.0
+    var dpi: Double? = 0.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_convert)
 
         val bundle = intent.getBundleExtra(CONVERTER_FIRST_KEY)
-        widthPX = bundle.getDouble(CONVERTER_WIDTH_PIXEL_KEY, 0.0)
-        heightPX = bundle.getDouble(CONVERTER_HEIGHT_PIXEL_KEY, 0.0)
-        widthDP = bundle.getDouble(CONVERTER_WIDTH_DP_KEY, 0.0)
-        heightDP = bundle.getDouble(CONVERTER_HEIGHT_DP_KEY, 0.0)
-        dpi = bundle.getDouble(CONVERTER_DPI, 0.0)
+        widthPX = bundle?.getDouble(CONVERTER_WIDTH_PIXEL_KEY, 0.0)
+        heightPX = bundle?.getDouble(CONVERTER_HEIGHT_PIXEL_KEY, 0.0)
+        widthDP = bundle?.getDouble(CONVERTER_WIDTH_DP_KEY, 0.0)
+        heightDP = bundle?.getDouble(CONVERTER_HEIGHT_DP_KEY, 0.0)
+        dpi = bundle?.getDouble(CONVERTER_DPI, 0.0)
 
         BindTextViews()
         tvWidthPx?.text = widthPX.toString()
@@ -63,16 +63,14 @@ class ConvertActivity : AppCompatActivity() {
             var widthItem = 0
             override fun afterTextChanged(p0: Editable?) {
                 Log.d("ConvertActivity_TAG", "afterTextChangedWidth: $p0")
-
-                var ratio = 0.0
-                var newWidthPX = 0.0
-                var newItemWidthDP = 0.0
+                val scrdpi = dpi ?: 0.0
+                val widthPXlocal = widthPX ?: 0.0
                 if (p0.toString() != "" && etWidthNew?.text.toString() != "") {
-                    var widthNew = etWidthNew?.text.toString().toInt()
+                    val widthNew = etWidthNew?.text.toString().toInt()
                     widthItem = p0.toString().toInt()
-                    ratio = widthPX / widthNew
-                    newWidthPX = widthItem / ratio
-                    newItemWidthDP = newWidthPX * 160 / dpi
+                    val ratio = widthPXlocal / widthNew
+                    val newWidthPX = widthItem / ratio
+                    val newItemWidthDP = newWidthPX * 160 / scrdpi
 
                     etItemWidthDP?.setText(newItemWidthDP.toString())
                 }
@@ -87,20 +85,19 @@ class ConvertActivity : AppCompatActivity() {
             }
         })
 
-        etItemHeightPX?.addTextChangedListener(object : TextWatcher{
+        etItemHeightPX?.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
-                var HeightItem = 0
                 Log.d("ConvertActivity_TAG", "afterTextChangedHeight: $p0")
 
-                var ratio = 0.0
-                var newHeightPX = 0.0
-                var newItemHeightDP = 0.0
+                val scrdpi = dpi ?: 0.0
+                val heightPXlocal = heightPX ?: 0.0
                 if (p0.toString() != "" && etHeightNew?.text.toString() != "") {
-                    var widthNew = etHeightNew?.text.toString().toInt()
-                    HeightItem = p0.toString().toInt()
-                    ratio = heightPX / widthNew
-                    newHeightPX = HeightItem / ratio
-                    newItemHeightDP = newHeightPX * 160 / dpi
+                    val widthNew = etHeightNew?.text.toString().toInt()
+                    val heightItem = p0.toString().toInt()
+                    val ratio = heightPXlocal / widthNew
+                    val newHeightPX = heightItem / ratio
+                    val newItemHeightDP = newHeightPX * 160 / scrdpi
+
 
                     etItemHeightDP?.setText(newItemHeightDP.toString())
                 }

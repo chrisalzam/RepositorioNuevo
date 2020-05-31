@@ -69,7 +69,7 @@ class ConvertActivity : AppCompatActivity() {
 
                 if (p0.toString() != "" && etWidthNew?.text.toString() != "") {
 
-                    val heightItem = p0.toString().toInt()
+                    val heightItem = p0.toString().toDouble()
                     val newItemHeightDP = heightItem * widthDPlocal / widthNew
 
                     etItemWidthDP?.setText(newItemHeightDP.toString())
@@ -93,7 +93,7 @@ class ConvertActivity : AppCompatActivity() {
                 val heightDPlocal = heightDP ?: 0.0
                 if (p0.toString() != "" && etHeightNew?.text.toString() != "") {
 
-                    val heightItem = p0.toString().toInt()
+                    val heightItem = p0.toString().toDouble()
                     val newItemHeightDP = heightItem * heightDPlocal / heightNew
 
 

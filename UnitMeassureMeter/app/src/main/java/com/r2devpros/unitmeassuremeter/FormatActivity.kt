@@ -129,7 +129,7 @@ class FormatActivity : AppCompatActivity() {
             override fun afterTextChanged(p0: Editable?) {
                 Log.d(
                     "FormatActivity",
-                    "${format?.stylename}, ${format?.pTop}, ${format?.mTop}," +
+                    "${format?.stylename}, ${tvConfigResult?.paddingTop}, ${format?.mTop}," +
                             "${format?.textsize}, ${format?.tcolor}"
                 )
             }

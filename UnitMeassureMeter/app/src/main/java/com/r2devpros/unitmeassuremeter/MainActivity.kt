@@ -65,7 +65,6 @@ class MainActivity : AppCompatActivity() {
 
         tvWidthDp?.text = widthDP.toString()
         tvHeightDp?.text = heightDP.toString()
-
     }
 
     private fun getDensity(context: Context): Int {

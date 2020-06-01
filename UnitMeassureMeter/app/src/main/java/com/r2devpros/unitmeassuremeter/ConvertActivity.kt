@@ -38,7 +38,7 @@ class ConvertActivity : AppCompatActivity() {
         heightDP = bundle?.getDouble(CONVERTER_HEIGHT_DP_KEY, 0.0)
         dpi = bundle?.getDouble(CONVERTER_DPI, 0.0)
 
-        BindTextViews()
+        bindTextViews()
         tvWidthPx?.text = widthPX.toString()
         tvHeightPx?.text = heightPX.toString()
         tvWidthDp?.text = widthDP.toString()
@@ -47,7 +47,7 @@ class ConvertActivity : AppCompatActivity() {
     }
 
 
-    private fun BindTextViews() {
+    private fun bindTextViews() {
         tvWidthPx = findViewById(R.id.tvWidthPX)
         tvHeightPx = findViewById(R.id.tvHeightPX)
         tvWidthDp = findViewById(R.id.tvWidthDP)

@@ -21,6 +21,31 @@
     <string name="tv_equal">=</string>
     <string name="tv_pixel_item_height">Pixel Item Height</string>
     <string name="tv_unit_measures_meter">Unit Measures - Meter</string>
+    <string name="tv_unit_measure_test">Unit Measure - Test</string>
+    <string name="tv_text_view_style">Text View Style:</string>
+    <string name="btn_config_style">Config</string>
+    <string name="tv_button_style">Button Style</string>
+    <string name="tv_px">px</string>
+    <string name="tv_dp">dp</string>
+    <string name="tv_text_style">Text Style:</string>
+    <string name="tv_title">TITLE</string>
+    <string name="tv_text">Text:</string>
+    <string name="tv_text_hint">MyStyle</string>
+    <string name="et_text_hint">write here your test text</string>
+    <string name="tv_padding">Padding:</string>
+    <string name="tv_margin">Margin:</string>
+    <string name="hint_start">Start</string>
+    <string name="hint_top">Top</string>
+    <string name="hint_bottom">Bottom</string>
+    <string name="hint_end">End</string>
+    <string name="tv_text_size">Text Size:</string>
+    <string name="et_text_Size">12</string>
+    <string name="tv_sp">sp</string>
+    <string name="tv_text_color">Text Color:</string>
+    <string name="et_text_color">#FFFFFF</string>
+    <string name="chk_transparent">Transparent</string>
+    <string name="tv_font_family">Font Family:</string>
+    <string name="tv_font_style">Font Style:</string>
     <string-array name="size_type_array">
         <item>sp</item>
         <item>dp</item>

@@ -41,6 +41,17 @@
         app:layout_constraintStart_toEndOf="@id/tvDeviceWidth"
         app:layout_constraintTop_toBottomOf="@id/tvTitleConverter" />
 
+
+    <TextView
+        android:id="@+id/tvpxw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="@string/tv_px"
+        android:textColor="@color/AllWhite"
+        app:layout_constraintBottom_toBottomOf="@id/tvWidthPX"
+        app:layout_constraintStart_toEndOf="@id/tvWidthPX" />
+
     <TextView
         android:id="@+id/tvWidthDP"
         android:layout_width="wrap_content"
@@ -49,6 +60,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/tvWidthPX"
         app:layout_constraintTop_toBottomOf="@id/tvTitleConverter" />
+
+    <TextView
+        android:id="@+id/tvdpw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="@string/tv_dp"
+        android:textColor="@color/AllWhite"
+        app:layout_constraintBottom_toBottomOf="@id/tvWidthDP"
+        app:layout_constraintStart_toEndOf="@id/tvWidthDP" />
 
     <TextView
         android:id="@+id/tvDeviceHeight"
@@ -69,6 +90,16 @@
         app:layout_constraintTop_toBottomOf="@id/tvWidthPX" />
 
     <TextView
+        android:id="@+id/tvpxh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="@string/tv_px"
+        android:textColor="@color/AllWhite"
+        app:layout_constraintBottom_toBottomOf="@id/tvHeightPX"
+        app:layout_constraintStart_toEndOf="@id/tvHeightPX" />
+
+    <TextView
         android:id="@+id/tvHeightDP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -76,6 +107,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/tvWidthPX"
         app:layout_constraintTop_toBottomOf="@id/tvWidthDP" />
+
+    <TextView
+        android:id="@+id/tvdph"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="@string/tv_dp"
+        android:textColor="@color/AllWhite"
+        app:layout_constraintBottom_toBottomOf="@id/tvHeightDP"
+        app:layout_constraintStart_toEndOf="@id/tvHeightDP" />
 
     <TextView
         android:id="@+id/tvConversion"

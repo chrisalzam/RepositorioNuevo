@@ -4,19 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FormatActivity"
+    android:layout_marginStart="15dp"
     android:background="@color/Blackground"
-    android:paddingLeft="15dp">
+    tools:context=".FormatActivity">
+
+
+    //--Screen Size--//
 
     <TextView
         android:id="@+id/tvTitleConverter"
         style="@style/TitleStyle"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:paddingTop="45dp"
         android:paddingBottom="45dp"
         android:text="@string/tv_unit_measures_meter"
+        app:layout_constraintEnd_toStartOf="@id/view_divider"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,7 +28,7 @@
         android:id="@+id/tvDeviceWidth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingEnd="5dp"
+        android:layout_marginEnd="5dp"
         android:text="@string/device_width"
         android:textColor="@color/AllWhite"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,14 +43,35 @@
         app:layout_constraintStart_toEndOf="@id/tvDeviceWidth"
         app:layout_constraintTop_toBottomOf="@id/tvTitleConverter" />
 
+
+    <TextView
+        android:id="@+id/tvpxw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="@string/tv_px"
+        android:textColor="@color/AllWhite"
+        app:layout_constraintBottom_toBottomOf="@id/tvWidthPX"
+        app:layout_constraintStart_toEndOf="@id/tvWidthPX" />
+
     <TextView
         android:id="@+id/tvWidthDP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/AllWhite"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/view_divider"
         app:layout_constraintStart_toEndOf="@id/tvWidthPX"
         app:layout_constraintTop_toBottomOf="@id/tvTitleConverter" />
+
+    <TextView
+        android:id="@+id/tvdpw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="@string/tv_dp"
+        android:textColor="@color/AllWhite"
+        app:layout_constraintBottom_toBottomOf="@id/tvWidthDP"
+        app:layout_constraintStart_toEndOf="@id/tvWidthDP" />
 
     <TextView
         android:id="@+id/tvDeviceHeight"
@@ -67,25 +92,393 @@
         app:layout_constraintTop_toBottomOf="@id/tvWidthPX" />
 
     <TextView
+        android:id="@+id/tvpxh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="@string/tv_px"
+        android:textColor="@color/AllWhite"
+        app:layout_constraintBottom_toBottomOf="@id/tvHeightPX"
+        app:layout_constraintStart_toEndOf="@id/tvHeightPX" />
+
+    <TextView
         android:id="@+id/tvHeightDP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/AllWhite"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/view_divider"
         app:layout_constraintStart_toEndOf="@id/tvWidthPX"
         app:layout_constraintTop_toBottomOf="@id/tvWidthDP" />
 
     <TextView
+        android:id="@+id/tvdph"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Text Style"
+        android:layout_marginStart="5dp"
+        android:text="@string/tv_dp"
+        android:textColor="@color/AllWhite"
+        app:layout_constraintBottom_toBottomOf="@id/tvHeightDP"
+        app:layout_constraintStart_toEndOf="@id/tvHeightDP" />
+
+    //--Configuration--//
+
+    <TextView
+        android:id="@+id/tvIsTextView"
+        style="@style/SubtitleStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="45dp"
-        app:layout_constraintTop_toBottomOf="@id/tvDeviceHeight"
+        android:text="@string/tv_title"
+        app:layout_constraintEnd_toEndOf="@id/view_divider"
         app:layout_constraintStart_toStartOf="parent"
-        android:textColor="@color/AllWhite"/>
+        app:layout_constraintTop_toBottomOf="@id/tvDeviceHeight" />
+
+    <TextView
+        android:id="@+id/tvTextStyle"
+        style="@style/SubtitleStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:text="@string/tv_text_style"
+        android:textColor="@color/AllWhite"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvIsTextView" />
+
+    <EditText
+        android:id="@+id/etTextStyle"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:autofillHints="MyStyle"
+        android:background="@color/AllWhite"
+        android:hint="@string/tv_text_hint"
+        android:inputType="textCapWords"
+        android:textAlignment="textStart"
+        app:layout_constraintBottom_toBottomOf="@id/tvTextStyle"
+        app:layout_constraintStart_toEndOf="@id/tvTextStyle" />
+
+    <TextView
+        android:id="@+id/tvText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/tv_text"
+        android:textColor="@color/AllWhite"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTextStyle" />
+
+    <EditText
+        android:id="@+id/etText"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:background="@color/AllWhite"
+        android:hint="@string/et_text_hint"
+        android:inputType="textCapWords"
+        android:textAlignment="textStart"
+        app:layout_constraintBottom_toBottomOf="@id/tvText"
+        app:layout_constraintStart_toStartOf="@id/etTextStyle" />
+
+    //--PADDING--//
+
+    <TextView
+        android:id="@+id/tvPadding"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/tv_padding"
+        android:textColor="@color/AllWhite"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvText" />
+
+    <EditText
+        android:id="@+id/etPaddingStart"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:background="@color/AllWhite"
+        android:hint="@string/hint_start"
+        android:inputType="number"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@id/tvPadding"
+        app:layout_constraintStart_toStartOf="@id/etText" />
+
+    <EditText
+        android:id="@+id/etPaddingTop"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:background="@color/AllWhite"
+        android:hint="@string/hint_top"
+        android:inputType="number"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@id/tvPadding"
+        app:layout_constraintStart_toEndOf="@id/etPaddingStart" />
+
+    <EditText
+        android:id="@+id/etPaddingBottom"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:background="@color/AllWhite"
+        android:hint="@string/hint_bottom"
+        android:inputType="number"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@id/tvPadding"
+        app:layout_constraintStart_toEndOf="@id/etPaddingTop" />
+
+    <EditText
+        android:id="@+id/etPaddingEnd"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:background="@color/AllWhite"
+        android:hint="@string/hint_end"
+        android:inputType="number"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@id/tvPadding"
+        app:layout_constraintStart_toEndOf="@id/etPaddingBottom" />
+
+    <TextView
+        android:id="@+id/tv_dpPadding"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="@string/tv_dp"
+        android:textColor="@color/AllWhite"
+        app:layout_constraintBottom_toBottomOf="@id/etPaddingEnd"
+        app:layout_constraintStart_toEndOf="@id/etPaddingEnd" />
+
+    <SeekBar
+        android:id="@+id/skPadding"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:progressBackgroundTint="@color/AllWhite"
+        app:layout_constraintStart_toStartOf="@id/etPaddingStart"
+        app:layout_constraintTop_toBottomOf="@id/etPaddingStart" />
+
+    //--MARGIN--//
+
+    <TextView
+        android:id="@+id/tvMargin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/tv_margin"
+        android:textColor="@color/AllWhite"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/skPadding" />
+
+    <EditText
+        android:id="@+id/etMarginStart"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:background="@color/AllWhite"
+        android:hint="@string/hint_start"
+        android:inputType="number"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@id/tvMargin"
+        app:layout_constraintStart_toStartOf="@id/etPaddingStart" />
+
+    <EditText
+        android:id="@+id/etMarginTop"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:background="@color/AllWhite"
+        android:hint="@string/hint_top"
+        android:inputType="number"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@id/tvMargin"
+        app:layout_constraintStart_toEndOf="@id/etMarginStart" />
+
+    <EditText
+        android:id="@+id/etMarginBottom"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:background="@color/AllWhite"
+        android:hint="@string/hint_bottom"
+        android:inputType="number"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@id/tvMargin"
+        app:layout_constraintStart_toEndOf="@id/etMarginTop" />
+
+    <EditText
+        android:id="@+id/etMarginEnd"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:background="@color/AllWhite"
+        android:hint="@string/hint_end"
+        android:inputType="number"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@id/tvMargin"
+        app:layout_constraintStart_toEndOf="@id/etMarginBottom" />
+
+    <TextView
+        android:id="@+id/tv_dpMargin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="@string/tv_dp"
+        android:textColor="@color/AllWhite"
+        app:layout_constraintBottom_toBottomOf="@id/etMarginEnd"
+        app:layout_constraintStart_toEndOf="@id/etMarginEnd" />
+
+    <SeekBar
+        android:id="@+id/skMargin"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:progressBackgroundTint="@color/AllWhite"
+        app:layout_constraintStart_toStartOf="@id/etMarginStart"
+        app:layout_constraintTop_toBottomOf="@id/etMarginStart" />
+
+    //--Text Size--//
+
+    <TextView
+        android:id="@+id/tvTextSize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/tv_text_size"
+        android:textColor="@color/AllWhite"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/skMargin" />
+
+    <EditText
+        android:id="@+id/etTextSize"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="@color/AllWhite"
+        android:hint="@string/et_text_Size"
+        android:inputType="number"
+        android:textAlignment="textStart"
+        app:layout_constraintBottom_toBottomOf="@id/tvTextSize"
+        app:layout_constraintStart_toStartOf="@id/etMarginStart" />
+
+    <TextView
+        android:id="@+id/tv_sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="@string/tv_sp"
+        android:textColor="@color/AllWhite"
+        app:layout_constraintBottom_toBottomOf="@id/etTextSize"
+        app:layout_constraintStart_toEndOf="@id/etTextSize" />
+
+    <SeekBar
+        android:id="@+id/skTextSize"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:progressBackgroundTint="@color/AllWhite"
+        app:layout_constraintStart_toStartOf="@id/skMargin"
+        app:layout_constraintTop_toBottomOf="@id/etTextSize" />
+
+    //--Colors--//
+
+    <TextView
+        android:id="@+id/tvTextColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/tv_text_color"
+        android:textColor="@color/AllWhite"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/skTextSize" />
+
+    <EditText
+        android:id="@+id/etTextColor"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="@color/AllWhite"
+        android:hint="@string/et_text_color"
+        android:inputType="text"
+        android:textAlignment="textStart"
+        app:layout_constraintBottom_toBottomOf="@id/tvTextColor"
+        app:layout_constraintStart_toStartOf="@id/etTextSize" />
+
+    <androidx.appcompat.widget.AppCompatCheckBox
+        android:id="@+id/chkTransparent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:shadowColor="@color/AllWhite"
+        android:outlineSpotShadowColor="@color/AllWhite"
+        app:layout_constraintBottom_toBottomOf="@id/etTextColor"
+        app:layout_constraintStart_toEndOf="@id/etTextColor"
+        android:text="@string/chk_transparent"
+        android:textColor="@color/AllWhite"
+        />
+
+    //--Font Family--//
+
+    <TextView
+        android:id="@+id/tvFontFamily"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/tv_font_family"
+        android:textColor="@color/AllWhite"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTextColor" />
+
+    <Spinner
+        android:id="@+id/spFontFamily"
+        android:layout_width="160dp"
+        android:layout_height="23dp"
+        android:layout_centerVertical="true"
+        app:layout_constraintBottom_toBottomOf="@id/tvFontFamily"
+        app:layout_constraintStart_toStartOf="@id/etTextColor"/>
+
+    //--Text Style--//
+
+    <TextView
+        android:id="@+id/tvTextFontStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/tv_font_style"
+        android:textColor="@color/AllWhite"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvFontFamily" />
+
+    <Spinner
+        android:id="@+id/spTextFontStyle"
+        android:layout_width="160dp"
+        android:layout_height="23dp"
+        android:layout_centerVertical="true"
+        android:background="@color/AllWhite"
+        android:backgroundTint="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="@id/tvTextFontStyle"
+        app:layout_constraintStart_toStartOf="@id/spFontFamily"/>
 
 
+    //--Right Pad--//
 
+    <View
+        android:id="@+id/view_divider"
+        style="@style/Divider"
+        android:foregroundGravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tvTitleTest"
+        app:layout_constraintStart_toEndOf="@id/tvTitleConverter"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/tvTitleTest"
+        style="@style/TitleStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="45dp"
+        android:paddingBottom="45dp"
+        android:text="@string/tv_unit_measure_test"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/view_divider"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

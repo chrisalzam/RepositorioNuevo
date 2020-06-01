@@ -17,6 +17,7 @@ const val CONVERTER_HEIGHT_PIXEL_KEY="HEIGHTPX"
 const val CONVERTER_WIDTH_DP_KEY="WIDTHDP"
 const val CONVERTER_HEIGHT_DP_KEY="HEIGHTDP"
 const val CONVERTER_DPI="DPI"
+const val ISTEXTVIEW = "ISATEXTVIEW"
 
 
 class MainActivity : AppCompatActivity() {
@@ -227,6 +228,28 @@ class MainActivity : AppCompatActivity() {
             putDouble(CONVERTER_WIDTH_DP_KEY, widthDP.toDouble())
             putDouble(CONVERTER_HEIGHT_DP_KEY, heightDP.toDouble())
             putDouble(CONVERTER_DPI, dpi.toDouble())
+        })
+        startActivity(intent)
+    }
+
+    fun configTextButtonClick(view: View) {
+        newWindowData(true)
+    }
+
+    fun configButtonClick(view: View) {
+        newWindowData(false)
+    }
+
+    private fun newWindowData(istv: Boolean)
+    {
+        val intent = Intent(this,FormatActivity::class.java)
+        intent.putExtra(CONVERTER_FIRST_KEY, Bundle().apply {
+            putDouble(CONVERTER_WIDTH_PIXEL_KEY,width.toDouble())
+            putDouble(CONVERTER_HEIGHT_PIXEL_KEY,height.toDouble())
+            putDouble(CONVERTER_WIDTH_DP_KEY, widthDP.toDouble())
+            putDouble(CONVERTER_HEIGHT_DP_KEY, heightDP.toDouble())
+            putDouble(CONVERTER_DPI, dpi.toDouble())
+            putBoolean(ISTEXTVIEW,istv)
         })
         startActivity(intent)
     }

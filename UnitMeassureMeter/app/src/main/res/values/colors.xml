@@ -5,4 +5,5 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="Blackground">#222222</color>
     <color name="AllWhite">#FFFFFF</color>
+    <color name="darkGray">#646464</color>
 </resources>

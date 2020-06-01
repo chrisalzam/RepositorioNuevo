@@ -41,16 +41,34 @@
         app:layout_constraintTop_toBottomOf="@id/tvTitle" />
 
     <TextView
+        android:id="@+id/tvpxw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="@string/tv_px"
+        android:textColor="@color/AllWhite"
+        app:layout_constraintBottom_toBottomOf="@id/tvTotalW_ValuePX"
+        app:layout_constraintStart_toEndOf="@id/tvTotalW_ValuePX" />
+
+    <TextView
         android:id="@+id/tvTotalW_ValueDP"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:gravity="end"
         android:paddingTop="35dp"
-        android:text="0 dp"
         android:textColor="@color/AllWhite"
         app:layout_constraintStart_toEndOf="@id/tvTotalW_ValuePX"
         app:layout_constraintTop_toBottomOf="@id/tvTitle" />
 
+    <TextView
+        android:id="@+id/tvdpw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="@string/tv_dp"
+        android:textColor="@color/AllWhite"
+        app:layout_constraintBottom_toBottomOf="@id/tvTotalW_ValueDP"
+        app:layout_constraintStart_toEndOf="@id/tvTotalW_ValueDP" />
     <TextView
         android:id="@+id/tvTotalH"
         android:layout_width="wrap_content"
@@ -67,29 +85,47 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:gravity="end"
-        android:paddingBottom="35dp"
-        android:text="0 px"
+        android:layout_marginBottom="35dp"
         android:textColor="@color/AllWhite"
         app:layout_constraintStart_toEndOf="@id/tvTotalH"
         app:layout_constraintTop_toBottomOf="@id/tvTotalW_ValuePX" />
+
+    <TextView
+        android:id="@+id/tvpxh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="@string/tv_px"
+        android:textColor="@color/AllWhite"
+        app:layout_constraintBottom_toBottomOf="@id/tvTotalH_ValuePX"
+        app:layout_constraintStart_toEndOf="@id/tvTotalH_ValuePX" />
 
     <TextView
         android:id="@+id/tvTotalH_ValueDP"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:gravity="end"
-        android:paddingBottom="35dp"
-        android:text="0 dp"
+        android:layout_marginBottom="35dp"
         android:textColor="@color/AllWhite"
         app:layout_constraintStart_toEndOf="@id/tvTotalW_ValuePX"
         app:layout_constraintTop_toBottomOf="@id/tvTotalW_ValueDP" />
+
+    <TextView
+        android:id="@+id/tvdph"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="@string/tv_dp"
+        android:textColor="@color/AllWhite"
+        app:layout_constraintBottom_toBottomOf="@id/tvTotalH_ValueDP"
+        app:layout_constraintStart_toEndOf="@id/tvTotalH_ValueDP" />
 
     <Button
         android:id="@+id/btn_Convert"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/btn_convert"
         android:onClick="convertButtonClick"
+        android:text="@string/btn_convert"
         app:layout_constraintBottom_toBottomOf="@id/tvTotalH_ValueDP"
         app:layout_constraintEnd_toStartOf="@id/view_divider"
         app:layout_constraintStart_toEndOf="@id/tvTotalW_ValueDP"
@@ -115,7 +151,7 @@
         android:inputType="number"
         android:maxLength="2"
         app:layout_constraintStart_toEndOf="@id/tvTextSize"
-        app:layout_constraintTop_toBottomOf="@id/tvTotalH_ValuePX" />
+        app:layout_constraintBottom_toBottomOf="@id/tvTextSize" />
 
     <!--    <TextView-->
     <!--        android:id="@+id/tvSizeType"-->
@@ -188,6 +224,47 @@
         android:progressBackgroundTint="@color/AllWhite"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvButtonSize" />
+
+    <TextView
+        android:id="@+id/tvTextViewStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:text="@string/tv_text_view_style"
+        android:textColor="@color/AllWhite"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/skButtonSize" />
+
+    <Button
+        android:id="@+id/btnConfigTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:onClick="configTextButtonClick"
+        android:text="@string/btn_config_style"
+        app:layout_constraintStart_toEndOf="@id/tvTextViewStyle"
+        app:layout_constraintTop_toBottomOf="@id/skButtonSize"
+        app:layout_constraintBottom_toBottomOf="@id/tvTextViewStyle"/>
+
+    <TextView
+        android:id="@+id/tvButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:text="@string/tv_button_style"
+        android:textColor="@color/AllWhite"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTextViewStyle" />
+
+    <Button
+        android:id="@+id/btnConfigButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="configButtonClick"
+        android:text="@string/btn_config_style"
+        app:layout_constraintStart_toStartOf="@id/btnConfigTextView"
+        app:layout_constraintTop_toBottomOf="@id/btnConfigTextView"
+        app:layout_constraintBottom_toBottomOf="@id/tvButtonStyle"/>
 
     <View
         android:id="@+id/view_divider"

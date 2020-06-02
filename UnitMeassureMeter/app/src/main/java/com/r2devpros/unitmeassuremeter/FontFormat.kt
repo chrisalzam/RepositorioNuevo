@@ -16,7 +16,9 @@ data class FontFormat(
     var mEnd: Int = 0,
     var mBottom: Int = 0,
     var textSize: Float = 0f,
-    var tColor: String = "",
+    var tColor: String = "#FFFFFF",
+    var backgroundColor: String = "#",
+    var backgroundTransparent: Boolean = true,
     var fontFamily: String = "",
     var fontStyle: String = ""
 ) : Parcelable

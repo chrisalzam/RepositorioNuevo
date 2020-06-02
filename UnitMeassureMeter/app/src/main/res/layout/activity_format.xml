@@ -471,18 +471,45 @@
             app:layout_constraintBottom_toBottomOf="@id/tvTextColor"
             app:layout_constraintStart_toStartOf="@id/etTextSize"
             app:layout_constraintTop_toTopOf="@id/tvTextColor" />
+        <!--endregion-->
+        <!--endregion-->
+
+        <!--region Background Color-->
+        <TextView
+            android:id="@+id/tvTextBackgroundColor"
+            style="@style/NormalTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/tv_background_color"
+            android:textColor="@color/AllWhite"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etTextColor" />
+
+        <EditText
+            android:id="@+id/etTextBackgroundColor"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:background="@color/AllWhite"
+            android:hint="@string/et_text_color"
+            android:inputType="text"
+            android:textAlignment="textStart"
+            app:layout_constraintBottom_toBottomOf="@id/tvTextBackgroundColor"
+            app:layout_constraintStart_toStartOf="@id/etTextSize"
+            app:layout_constraintTop_toTopOf="@id/tvTextBackgroundColor" />
 
         <androidx.appcompat.widget.AppCompatCheckBox
-            android:id="@+id/chkTransparent"
+            android:id="@+id/chkBackgroundTransparent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:shadowColor="@color/AllWhite"
             android:text="@string/chk_transparent"
             android:textColor="@color/AllWhite"
-            app:layout_constraintBottom_toBottomOf="@id/etTextColor"
-            app:layout_constraintStart_toEndOf="@id/etTextColor"
-            app:layout_constraintTop_toTopOf="@id/tvTextColor" />
+            app:layout_constraintBottom_toBottomOf="@id/tvTextBackgroundColor"
+            app:layout_constraintStart_toEndOf="@id/etTextBackgroundColor"
+            app:layout_constraintTop_toTopOf="@id/tvTextBackgroundColor" />
         <!--endregion-->
 
         <!--region Font Family-->
@@ -495,7 +522,7 @@
             android:text="@string/tv_font_family"
             android:textColor="@color/AllWhite"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etTextColor" />
+            app:layout_constraintTop_toBottomOf="@id/etTextBackgroundColor" />
 
         <Spinner
             android:id="@+id/spTextFontFamily"
@@ -504,7 +531,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             app:layout_constraintBottom_toBottomOf="@id/tvFontFamily"
-            app:layout_constraintEnd_toEndOf="@id/chkTransparent"
+            app:layout_constraintEnd_toEndOf="@id/chkBackgroundTransparent"
             app:layout_constraintStart_toStartOf="@id/etTextColor"
             app:layout_constraintTop_toTopOf="@id/tvFontFamily" />
         <!--endregion-->
@@ -528,7 +555,7 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="15dp"
             app:layout_constraintBottom_toBottomOf="@id/tvTextFontStyle"
-            app:layout_constraintEnd_toEndOf="@id/chkTransparent"
+            app:layout_constraintEnd_toEndOf="@id/chkBackgroundTransparent"
             app:layout_constraintStart_toEndOf="@id/barrier1"
             app:layout_constraintTop_toTopOf="@id/tvTextFontStyle" />
         <!--endregion-->
@@ -591,13 +618,12 @@
 
         <TextView
             android:id="@+id/tvResult"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="@string/result"
             android:textColor="@color/AllWhite"
             android:visibility="invisible"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/view_divider"
             app:layout_constraintTop_toBottomOf="@id/tvTitleTest"
             tools:visibility="visible" />
@@ -606,12 +632,13 @@
             android:id="@+id/btnResult"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:textColor="@color/AllWhite"
             android:text="@string/button_text"
             android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/view_divider"
-            app:layout_constraintTop_toBottomOf="@id/tvTitleTest" />
+            app:layout_constraintTop_toBottomOf="@id/tvResult"
+            tools:visibility="visible" />
         <!--endregion-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>

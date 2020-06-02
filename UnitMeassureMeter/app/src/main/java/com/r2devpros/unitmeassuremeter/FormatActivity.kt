@@ -1,10 +1,10 @@
 package com.r2devpros.unitmeassuremeter
 
 import android.content.Intent
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.marginBottom
@@ -12,7 +12,6 @@ import androidx.core.view.marginEnd
 import androidx.core.view.marginStart
 import androidx.core.view.marginTop
 import kotlinx.android.synthetic.main.activity_format.*
-import kotlinx.android.synthetic.main.activity_format.view.*
 
 class FormatActivity : AppCompatActivity() {
     //region Views
@@ -38,19 +37,20 @@ class FormatActivity : AppCompatActivity() {
     private var etSize: EditText? = null
     private var skSize: SeekBar? = null
     private var etTColor: EditText? = null
+    private var etBackgroundColor: EditText? = null
     private var chkT: CheckBox? = null
     private var spFontFamily: Spinner? = null
     private var spFontStyle: Spinner? = null
     //endregion
 
     //region variables
-    var widthPX: Double? = 0.0
-    var heightPX: Double? = 0.0
-    var widthDP: Double? = 0.0
-    var heightDP: Double? = 0.0
-    var dpi: Double? = 0.0
-    var istextview: Boolean = false
-    var format = FontFormat()
+    private var widthPX: Double? = 0.0
+    private var heightPX: Double? = 0.0
+    private var widthDP: Double? = 0.0
+    private var heightDP: Double? = 0.0
+    private var dpi: Double? = 0.0
+    private var istextview: Boolean = false
+    private var format = FontFormat()
     //endregion
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,87 +64,7 @@ class FormatActivity : AppCompatActivity() {
         bindEvents()
     }
 
-    private fun initViews() {
-        tvWidthPx?.text = widthPX.toString()
-        tvHeightPx?.text = heightPX.toString()
-        tvWidthDp?.text = widthDP.toString()
-        tvHeightDp?.text = heightDP.toString()
-
-        val tvEnable = istextview
-        if (tvEnable) {
-            tvIsText?.text = getString(R.string.text_view_config_label)
-            tvConfigResult?.visibility = View.VISIBLE
-        } else {
-            tvIsText?.text = getString(R.string.button_config_label)
-            btnConfigResult?.visibility = View.VISIBLE
-        }
-    }
-
-    private fun initViewsWithInitialData() {
-        //set every item with their corresponding style
-        //Get previous styles (if any) and apply them to current views
-        if (istextview) {
-            tvResult?.let {
-                etText?.setText(it.text.toString())
-                etPaddingStart?.setText(it.paddingStart.toString())
-                etPaddingTop?.setText(it.paddingTop.toString())
-                etPaddingBottom?.setText(it.paddingBottom.toString())
-                etPaddingEnd?.setText(it.paddingEnd.toString())
-                etMarginBottom?.setText(it.marginBottom.toString())
-                etMarginEnd?.setText(it.marginEnd.toString())
-                etMarginTop?.setText(it.marginTop.toString())
-                etMarginStart?.setText(it.marginStart.toString())
-//                etTextSize?.setText(it.etTextSize.toString())
-//                etTextColor?.setText(it.etTextColor.toString())
-            }
-        } else {
-            btnConfigResult?.let {
-                etText?.setText(it.text.toString())
-                etPS?.setText(it.paddingStart.toString())
-                etPT?.setText(it.paddingTop.toString())
-                etPB?.setText(it.paddingBottom.toString())
-                etPE?.setText(it.paddingEnd.toString())
-                etMB?.setText(it.marginBottom.toString())
-                etME?.setText(it.marginEnd.toString())
-                etMT?.setText(it.marginTop.toString())
-                etMS?.setText(it.marginStart.toString())
-//                etSize?.setText(it.etTextSize.toString())
-//                etTextColor?.setText(it.etTextColor.toString())
-            }
-        }
-    }
-
-    private fun getDeviceScreenSize() {
-        val bundle = intent.getBundleExtra(CONVERTER_FIRST_KEY)
-
-        widthPX = bundle?.getDouble(CONVERTER_WIDTH_PIXEL_KEY, 0.0)
-        heightPX = bundle?.getDouble(CONVERTER_HEIGHT_PIXEL_KEY, 0.0)
-        widthDP = bundle?.getDouble(CONVERTER_WIDTH_DP_KEY, 0.0)
-        heightDP = bundle?.getDouble(CONVERTER_HEIGHT_DP_KEY, 0.0)
-        dpi = bundle?.getDouble(CONVERTER_DPI, 0.0)
-        istextview = bundle?.getBoolean(ISTEXTVIEW, true) ?: false
-    }
-
-    private fun setFontFormat() {
-        format.styleName = etStyle?.text.toString()
-        format.text = etText?.text.toString()
-        format.pTop = etPT?.text?.toString()?.toInt() ?: 0
-        format.pStart = etPS?.text?.toString()?.toInt() ?: 0
-        format.pEnd = etPE?.text?.toString()?.toInt() ?: 0
-        format.pBottom = etPB?.text?.toString()?.toInt() ?: 0
-        val param = tvConfigResult?.layoutParams as ViewGroup.MarginLayoutParams
-        format.mTop = param.topMargin
-        format.mStart = param.marginStart
-        format.mEnd = param.marginEnd
-        format.mBottom = param.bottomMargin
-        format.textSize = tvConfigResult?.textSize ?: 8f
-        //format?.tcolor = tvConfigResult?.currentTextColor
-        //val decColor = tvConfigResult?.currentTextColor
-        //val hexColor = String.format("#%06X", 0xFFFFFF and 2584)
-        format.tColor = etTextColor?.text.toString()
-
-    }
-
+    //region binding
     private fun bindTextViews() {
         tvWidthPx = findViewById(R.id.tvWidthPX)
         tvHeightPx = findViewById(R.id.tvHeightPX)
@@ -168,7 +88,8 @@ class FormatActivity : AppCompatActivity() {
         etSize = findViewById(R.id.etTextSize)
         skSize = findViewById(R.id.skTextSize)
         etTColor = findViewById(R.id.etTextColor)
-        chkT = findViewById(R.id.chkTransparent)
+        etBackgroundColor = findViewById(R.id.etTextBackgroundColor)
+        chkT = findViewById(R.id.chkBackgroundTransparent)
         spFontFamily = findViewById(R.id.spTextFontFamily)
         spFontStyle = findViewById(R.id.spTextFontStyle)
     }
@@ -181,24 +102,33 @@ class FormatActivity : AppCompatActivity() {
                 setFontFormat()
                 FontApply.apply(
                     fontFormat = format,
-                    tv = tvResult,
-                    btn = btnConfigResult
+                    tv = if (istextview) tvResult else null,
+                    btn = if (!istextview) btnConfigResult else null
 
                 )
             }
         }
 
         etText?.setOnFocusChangeListener(onFocused)
+
+        //region Padding
         etPaddingStart?.setOnFocusChangeListener(onFocused)
         etPaddingTop?.setOnFocusChangeListener(onFocused)
         etPaddingBottom?.setOnFocusChangeListener(onFocused)
         etPaddingEnd?.setOnFocusChangeListener(onFocused)
+        //endregion
+
+        //region Margin
         etMarginStart?.setOnFocusChangeListener(onFocused)
         etMarginTop?.setOnFocusChangeListener(onFocused)
         etMarginBottom?.setOnFocusChangeListener(onFocused)
         etMarginEnd?.setOnFocusChangeListener(onFocused)
-//        etTextSize?.setOnFocusChangeListener(onFocused)
-        //etTextColor?.setOnFocusChangeListener(onFocused)
+        //endregion
+
+        etTextSize?.setOnFocusChangeListener(onFocused)
+        etTextColor?.setOnFocusChangeListener(onFocused)
+        etBackgroundColor?.setOnFocusChangeListener(onFocused)
+        chkT?.setOnCheckedChangeListener(onFocused)
 
         findViewById<Button>(R.id.btnGoBack).setOnClickListener {
             Log.d("FormatActivity_TAG", "bindEvents: goBack")
@@ -208,9 +138,124 @@ class FormatActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+    //endregion
 
+    private fun initViews() {
+        tvWidthPx?.text = widthPX.toString()
+        tvHeightPx?.text = heightPX.toString()
+        tvWidthDp?.text = widthDP.toString()
+        tvHeightDp?.text = heightDP.toString()
 
-    private fun setFormatOnView() {
-
+        val tvEnable = istextview
+        if (tvEnable) {
+            tvIsText?.text = getString(R.string.text_view_config_label)
+            tvConfigResult?.visibility = View.VISIBLE
+        } else {
+            tvIsText?.text = getString(R.string.button_config_label)
+            btnConfigResult?.visibility = View.VISIBLE
+        }
     }
+
+    private fun getDeviceScreenSize() {
+        val bundle = intent.getBundleExtra(CONVERTER_FIRST_KEY)
+
+        widthPX = bundle?.getDouble(CONVERTER_WIDTH_PIXEL_KEY, 0.0)
+        heightPX = bundle?.getDouble(CONVERTER_HEIGHT_PIXEL_KEY, 0.0)
+        widthDP = bundle?.getDouble(CONVERTER_WIDTH_DP_KEY, 0.0)
+        heightDP = bundle?.getDouble(CONVERTER_HEIGHT_DP_KEY, 0.0)
+        dpi = bundle?.getDouble(CONVERTER_DPI, 0.0)
+        istextview = bundle?.getBoolean(ISTEXTVIEW, true) ?: false
+    }
+
+    private fun initViewsWithInitialData() {
+        //set every item with their corresponding style
+        //Get previous styles (if any) and apply them to current views
+        val view: View = if (istextview) {
+            tvResult?.let {
+                etText.setValue(it.text)
+                etTextSize.setValue(it.textSize)
+                etTextColor.setValue(it.getColorHex())
+            }
+            tvResult ?: return
+        } else {
+            btnConfigResult?.let {
+                etText.setValue(it.text)
+                etTextSize.setValue(it.textSize)
+                etTextColor.setValue(it.getColorHex())
+            }
+            btnConfigResult ?: return
+        }
+
+        view.let {
+            //region Padding
+            etPS.setValue(it.paddingStart)
+            etPT.setValue(it.paddingTop)
+            etPB.setValue(it.paddingBottom)
+            etPE.setValue(it.paddingEnd)
+            //endregion
+
+            //region Margin
+            etMS.setValue(it.marginStart)
+            etMT.setValue(it.marginTop)
+            etMB.setValue(it.marginBottom)
+            etME.setValue(it.marginEnd)
+            //endregion
+
+            etBackgroundColor.setValue(it.getBackgroundColorHex())
+            chkT?.isChecked = (etBackgroundColor?.text.isNullOrEmpty())
+        }
+    }
+
+    private fun setFontFormat() {
+        format.styleName = etStyle.getText()
+        format.text = etText.getText()
+
+        //region Padding
+        format.pTop = etPT.getIntValue()
+        format.pStart = etPS.getIntValue()
+        format.pEnd = etPE.getIntValue()
+        format.pBottom = etPB.getIntValue()
+        //endregion
+
+        //region Margin
+        format.mStart = etMS.getIntValue()
+        format.mTop = etMT.getIntValue()
+        format.mBottom = etMB.getIntValue()
+        format.mEnd = etME.getIntValue()
+        //endregion
+
+        format.textSize = etTextSize.getFloatValue(8f)
+        format.tColor = etTextColor.getText("#FFFFFF")
+        format.backgroundColor = etBackgroundColor.getText("")
+        format.backgroundTransparent = chkT?.isChecked ?: false
+    }
+
+    //region Extension Functions
+    private fun EditText?.getIntValue(defaultValue: Int = 0): Int =
+        this?.text?.toString()?.toInt() ?: defaultValue
+
+    private fun EditText?.getFloatValue(defaultValue: Float = 0f): Float =
+        this?.text?.toString()?.toFloat() ?: defaultValue
+
+    private fun EditText?.getText(defaultValue: String = ""): String =
+        this?.text?.toString() ?: defaultValue
+
+    private fun EditText?.setValue(defaultValue: Any) = this?.setText(defaultValue.toString())
+
+    private fun TextView.getColorHex(): String =
+        java.lang.String.format("#%06X", 0xFFFFFF and this.currentTextColor)
+
+    private fun View.getBackgroundColorHex(): String {
+        try {
+            return java.lang.String.format(
+                "#%06X",
+                0xFFFFFF and (this.background as ColorDrawable).color
+            )
+        } catch (e: Exception) {
+            Log.d("FormatActivity_TAG", "getBackgroundColorHex: exception: ${e.message}")
+        }
+
+        return ""
+    }
+    //endregion
 }

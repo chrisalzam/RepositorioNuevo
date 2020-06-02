@@ -7,7 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.marginBottom
+import androidx.core.view.marginEnd
+import androidx.core.view.marginStart
+import androidx.core.view.marginTop
 import kotlinx.android.synthetic.main.activity_format.*
+import kotlinx.android.synthetic.main.activity_format.view.*
 
 class FormatActivity : AppCompatActivity() {
     //region Views
@@ -32,7 +37,7 @@ class FormatActivity : AppCompatActivity() {
     private var skMargin: SeekBar? = null
     private var etSize: EditText? = null
     private var skSize: SeekBar? = null
-    private var etTextColor: EditText? = null
+    private var etTColor: EditText? = null
     private var chkT: CheckBox? = null
     private var spFontFamily: Spinner? = null
     private var spFontStyle: Spinner? = null
@@ -85,14 +90,26 @@ class FormatActivity : AppCompatActivity() {
                 etPaddingTop?.setText(it.paddingTop.toString())
                 etPaddingBottom?.setText(it.paddingBottom.toString())
                 etPaddingEnd?.setText(it.paddingEnd.toString())
+                etMarginBottom?.setText(it.marginBottom.toString())
+                etMarginEnd?.setText(it.marginEnd.toString())
+                etMarginTop?.setText(it.marginTop.toString())
+                etMarginStart?.setText(it.marginStart.toString())
+//                etTextSize?.setText(it.etTextSize.toString())
+//                etTextColor?.setText(it.etTextColor.toString())
             }
         } else {
             btnConfigResult?.let {
                 etText?.setText(it.text.toString())
-                etPaddingStart?.setText(it.paddingStart.toString())
-                etPaddingTop?.setText(it.paddingTop.toString())
-                etPaddingBottom?.setText(it.paddingBottom.toString())
-                etPaddingEnd?.setText(it.paddingEnd.toString())
+                etPS?.setText(it.paddingStart.toString())
+                etPT?.setText(it.paddingTop.toString())
+                etPB?.setText(it.paddingBottom.toString())
+                etPE?.setText(it.paddingEnd.toString())
+                etMB?.setText(it.marginBottom.toString())
+                etME?.setText(it.marginEnd.toString())
+                etMT?.setText(it.marginTop.toString())
+                etMS?.setText(it.marginStart.toString())
+//                etSize?.setText(it.etTextSize.toString())
+//                etTextColor?.setText(it.etTextColor.toString())
             }
         }
     }
@@ -111,11 +128,10 @@ class FormatActivity : AppCompatActivity() {
     private fun setFontFormat() {
         format.styleName = etStyle?.text.toString()
         format.text = etText?.text.toString()
-        format.pTop = etPaddingTop?.text?.toString()?.toInt() ?: 0
-        format.pStart = etPaddingStart?.text?.toString()?.toInt() ?: 0
-        format.pEnd = etPaddingEnd?.text?.toString()?.toInt() ?: 0
-        format.pBottom = etPaddingBottom?.text?.toString()?.toInt() ?: 0
-
+        format.pTop = etPT?.text?.toString()?.toInt() ?: 0
+        format.pStart = etPS?.text?.toString()?.toInt() ?: 0
+        format.pEnd = etPE?.text?.toString()?.toInt() ?: 0
+        format.pBottom = etPB?.text?.toString()?.toInt() ?: 0
         val param = tvConfigResult?.layoutParams as ViewGroup.MarginLayoutParams
         format.mTop = param.topMargin
         format.mStart = param.marginStart
@@ -123,9 +139,9 @@ class FormatActivity : AppCompatActivity() {
         format.mBottom = param.bottomMargin
         format.textSize = tvConfigResult?.textSize ?: 8f
         //format?.tcolor = tvConfigResult?.currentTextColor
-        val decColor = tvConfigResult?.currentTextColor
-        val hexColor = String.format("#%06X", 0xFFFFFF and 2584)
-        format.tColor = hexColor
+        //val decColor = tvConfigResult?.currentTextColor
+        //val hexColor = String.format("#%06X", 0xFFFFFF and 2584)
+        format.tColor = etTextColor?.text.toString()
 
     }
 
@@ -151,7 +167,7 @@ class FormatActivity : AppCompatActivity() {
         skMargin = findViewById(R.id.skMargin)
         etSize = findViewById(R.id.etTextSize)
         skSize = findViewById(R.id.skTextSize)
-        etTextColor = findViewById(R.id.etTextColor)
+        etTColor = findViewById(R.id.etTextColor)
         chkT = findViewById(R.id.chkTransparent)
         spFontFamily = findViewById(R.id.spTextFontFamily)
         spFontStyle = findViewById(R.id.spTextFontStyle)
@@ -167,6 +183,7 @@ class FormatActivity : AppCompatActivity() {
                     fontFormat = format,
                     tv = tvResult,
                     btn = btnConfigResult
+
                 )
             }
         }
@@ -176,6 +193,12 @@ class FormatActivity : AppCompatActivity() {
         etPaddingTop?.setOnFocusChangeListener(onFocused)
         etPaddingBottom?.setOnFocusChangeListener(onFocused)
         etPaddingEnd?.setOnFocusChangeListener(onFocused)
+        etMarginStart?.setOnFocusChangeListener(onFocused)
+        etMarginTop?.setOnFocusChangeListener(onFocused)
+        etMarginBottom?.setOnFocusChangeListener(onFocused)
+        etMarginEnd?.setOnFocusChangeListener(onFocused)
+//        etTextSize?.setOnFocusChangeListener(onFocused)
+        //etTextColor?.setOnFocusChangeListener(onFocused)
 
         findViewById<Button>(R.id.btnGoBack).setOnClickListener {
             Log.d("FormatActivity_TAG", "bindEvents: goBack")

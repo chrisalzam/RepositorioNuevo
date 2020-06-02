@@ -27,7 +27,7 @@
     <string name="tv_button_style">Button Style</string>
     <string name="tv_px">px</string>
     <string name="tv_dp">dp</string>
-    <string name="tv_text_style">Text Style:</string>
+    <string name="tv_text_style">Style Name</string>
     <string name="tv_title">TITLE</string>
     <string name="tv_text">Text:</string>
     <string name="tv_text_hint">MyStyle</string>
@@ -46,6 +46,8 @@
     <string name="chk_transparent">Transparent</string>
     <string name="tv_font_family">Font Family:</string>
     <string name="tv_font_style">Font Style:</string>
+    <string name="text_view_config_label">TextView Configuration</string>
+    <string name="button_config_label">Button Configuration</string>
     <string-array name="size_type_array">
         <item>sp</item>
         <item>dp</item>

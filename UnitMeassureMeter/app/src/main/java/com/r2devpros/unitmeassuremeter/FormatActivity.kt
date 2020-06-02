@@ -1,6 +1,5 @@
 package com.r2devpros.unitmeassuremeter
 
-import android.R.color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -9,11 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import java.lang.String
-
 
 class FormatActivity : AppCompatActivity() {
-
+    //region Views
     private var tvWidthPx: TextView? = null
     private var tvHeightPx: TextView? = null
     private var tvWidthDp: TextView? = null
@@ -39,7 +36,9 @@ class FormatActivity : AppCompatActivity() {
     private var chkT: CheckBox? = null
     private var spFontFamily: Spinner? = null
     private var spFontStyle: Spinner? = null
+    //endregion
 
+    //region variables
     var widthPX: Double? = 0.0
     var heightPX: Double? = 0.0
     var widthDP: Double? = 0.0
@@ -47,10 +46,35 @@ class FormatActivity : AppCompatActivity() {
     var dpi: Double? = 0.0
     var istextview: Boolean? = null
     var format: FontFormat? = null
+    //endregion
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_format)
 
+        getInitInfo()
+        bindTextViews()
+        initViews()
+        initFontFormat()
+    }
+
+    private fun initViews() {
+        tvWidthPx?.text = widthPX.toString()
+        tvHeightPx?.text = heightPX.toString()
+        tvWidthDp?.text = widthDP.toString()
+        tvHeightDp?.text = heightDP.toString()
+
+        val tvEnable = istextview ?: true
+        if (tvEnable) {
+            tvIsText?.text = getString(R.string.text_view_config_label)
+            tvConfigResult?.visibility = View.VISIBLE
+        } else {
+            tvIsText?.text = getString(R.string.button_config_label)
+            btnConfigResult?.visibility = View.VISIBLE
+        }
+    }
+
+    private fun getInitInfo() {
         val bundle = intent.getBundleExtra(CONVERTER_FIRST_KEY)
 
         widthPX = bundle?.getDouble(CONVERTER_WIDTH_PIXEL_KEY, 0.0)
@@ -59,27 +83,9 @@ class FormatActivity : AppCompatActivity() {
         heightDP = bundle?.getDouble(CONVERTER_HEIGHT_DP_KEY, 0.0)
         dpi = bundle?.getDouble(CONVERTER_DPI, 0.0)
         istextview = bundle?.getBoolean(ISTEXTVIEW, true)
-
-        bindTextViews()
-
-        tvWidthPx?.text = widthPX.toString()
-        tvHeightPx?.text = heightPX.toString()
-        tvWidthDp?.text = widthDP.toString()
-        tvHeightDp?.text = heightDP.toString()
-
-        val tvEnable = istextview ?: true
-        if (tvEnable) {
-            tvIsText?.text = "TextView Configuration"
-            tvConfigResult?.visibility = View.VISIBLE
-        } else {
-            tvIsText?.text = "Button Configuration"
-            btnConfigResult?.visibility = View.VISIBLE
-        }
-
-        InitFontFormat()
     }
 
-    fun InitFontFormat() {
+    private fun initFontFormat() {
         format?.stylename = etStyle?.text.toString()
         format?.pTop = tvConfigResult?.paddingTop
         format?.pStart = tvConfigResult?.paddingStart

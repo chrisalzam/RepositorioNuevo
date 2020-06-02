@@ -57,4 +57,22 @@
         <item>dp</item>
     </string-array>
 
+    <string-array name="fonts_array">
+        <item>Gotham Bold</item>
+        <item>Gotham Bold Italic</item>
+        <item>Gotham Book</item>
+        <item>Gotham Book Italic</item>
+        <item>Gotham Light</item>
+        <item>Gotham Light Italic</item>
+        <item>Gotham Medium</item>
+        <item>Gotham Medium 1</item>
+        <item>Gotham Medium Italic</item>
+    </string-array>
+
+    <string-array name="font_style_array">
+        <item>Normal</item>
+        <item>Bold</item>
+        <item>Italic</item>
+    </string-array>
+
 </resources>

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.core.content.res.ResourcesCompat
 
 
 object FontApply {
@@ -18,6 +19,22 @@ object FontApply {
                         text = it.text
                         textSize = it.textSize
                         setTextColor(Color.parseColor(it.tColor))
+
+                        //region font Family
+                        try {
+                            setTypeface(
+                                ResourcesCompat.getFont(
+                                    context, resources.getIdentifier(
+                                        it.fontFamily,
+                                        "font",
+                                        context.packageName
+                                    )
+                                ), it.fontStyle
+                            )
+                        } catch (e: Exception) {
+                            Log.d("FontApply_TAG", "apply: font family exception: $e")
+                        }
+                        //endregion
                     }
                 }
                 tv
@@ -28,6 +45,22 @@ object FontApply {
                         text = it.text
                         textSize = it.textSize
                         setTextColor(Color.parseColor(it.tColor))
+
+                        //region font Family
+                        try {
+                            setTypeface(
+                                ResourcesCompat.getFont(
+                                    context, resources.getIdentifier(
+                                        it.fontFamily,
+                                        "font",
+                                        context.packageName
+                                    )
+                                ), it.fontStyle
+                            )
+                        } catch (e: Exception) {
+                            Log.d("FontApply_TAG", "apply: font family exception: $e")
+                        }
+                        //endregion
                     }
                 }
                 btn
@@ -58,5 +91,9 @@ object FontApply {
                 }
             }
         }
+    }
+
+    fun generateXML(fontFormat: FontFormat): String {
+        return ""
     }
 }

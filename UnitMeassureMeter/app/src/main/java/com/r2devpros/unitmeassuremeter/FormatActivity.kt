@@ -1,6 +1,7 @@
 package com.r2devpros.unitmeassuremeter
 
 import android.content.Intent
+import android.graphics.Typeface
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
@@ -12,7 +13,9 @@ import androidx.core.view.marginEnd
 import androidx.core.view.marginStart
 import androidx.core.view.marginTop
 import kotlinx.android.synthetic.main.activity_format.*
+import java.util.*
 
+@ExperimentalStdlibApi
 class FormatActivity : AppCompatActivity() {
     //region Views
     private var tvWidthPx: TextView? = null
@@ -92,6 +95,24 @@ class FormatActivity : AppCompatActivity() {
         chkT = findViewById(R.id.chkBackgroundTransparent)
         spFontFamily = findViewById(R.id.spTextFontFamily)
         spFontStyle = findViewById(R.id.spTextFontStyle)
+
+        ArrayAdapter.createFromResource(
+            this,
+            R.array.fonts_array,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_item)
+            spFontFamily?.adapter = adapter
+        }
+
+        ArrayAdapter.createFromResource(
+            this,
+            R.array.font_style_array,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_item)
+            spFontStyle?.adapter = adapter
+        }
     }
 
     private fun bindEvents() {
@@ -104,10 +125,28 @@ class FormatActivity : AppCompatActivity() {
                     fontFormat = format,
                     tv = if (istextview) tvResult else null,
                     btn = if (!istextview) btnConfigResult else null
-
                 )
             }
         }
+        val onItemSelectedListener = (object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                Log.d("FormatActivity_TAG", "onNothingSelected: ")
+            }
+
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                setFontFormat()
+                FontApply.apply(
+                    fontFormat = format,
+                    tv = if (istextview) tvResult else null,
+                    btn = if (!istextview) btnConfigResult else null
+                )
+            }
+        })
 
         etText?.setOnFocusChangeListener(onFocused)
 
@@ -129,6 +168,9 @@ class FormatActivity : AppCompatActivity() {
         etTextColor?.setOnFocusChangeListener(onFocused)
         etBackgroundColor?.setOnFocusChangeListener(onFocused)
         chkT?.setOnCheckedChangeListener(onFocused)
+
+        spFontFamily?.onItemSelectedListener = onItemSelectedListener
+        spFontStyle?.onItemSelectedListener = onItemSelectedListener
 
         findViewById<Button>(R.id.btnGoBack).setOnClickListener {
             Log.d("FormatActivity_TAG", "bindEvents: goBack")
@@ -175,6 +217,13 @@ class FormatActivity : AppCompatActivity() {
                 etText.setValue(it.text)
                 etTextSize.setValue(it.textSize)
                 etTextColor.setValue(it.getColorHex())
+
+                val fontFamilyPosition = spFontFamily.getFontFamilyPosition(it.tag)
+                spFontFamily?.setSelection(fontFamilyPosition)
+
+                val fontStylePosition =
+                    spFontStyle.getFontStylePosition(FontStyle.fromValue(it.typeface.style))
+                spFontStyle?.setSelection(fontStylePosition)
             }
             tvResult ?: return
         } else {
@@ -182,6 +231,13 @@ class FormatActivity : AppCompatActivity() {
                 etText.setValue(it.text)
                 etTextSize.setValue(it.textSize)
                 etTextColor.setValue(it.getColorHex())
+
+                val fontFamilyPosition = spFontFamily.getFontFamilyPosition(it.tag)
+                spFontFamily?.setSelection(fontFamilyPosition)
+
+                val fontStylePosition =
+                    spFontStyle.getFontStylePosition(FontStyle.fromValue(it.typeface.style))
+                spFontStyle?.setSelection(fontStylePosition)
             }
             btnConfigResult ?: return
         }
@@ -228,9 +284,37 @@ class FormatActivity : AppCompatActivity() {
         format.tColor = etTextColor.getText("#FFFFFF")
         format.backgroundColor = etBackgroundColor.getText("")
         format.backgroundTransparent = chkT?.isChecked ?: false
+        format.fontFamily = spFontFamily?.selectedItem?.toString()?.let {
+            Fonts.fromDescription(it)?.resourceName ?: ""
+        } ?: ""
+        format.fontStyle = spFontStyle?.selectedItem?.toString()?.let {
+            FontStyle.fromDescription(it).value
+        } ?: Typeface.NORMAL
     }
 
     //region Extension Functions
+    private fun Spinner?.getFontFamilyPosition(fontFamily: Any): Int {
+        val sp = this ?: return 0
+        for (i in 0 until sp.adapter.count) {
+            if (sp.adapter.getItem(i).toString() == fontFamily.toString().toReadableName()) {
+                return i
+            }
+        }
+
+        return 0
+    }
+
+    private fun Spinner?.getFontStylePosition(fontStyle: FontStyle): Int {
+        val sp = this ?: return 0
+        for (i in 0 until sp.adapter.count) {
+            if (sp.adapter.getItem(i).toString() == fontStyle.description) {
+                return i
+            }
+        }
+
+        return 0
+    }
+
     private fun EditText?.getIntValue(defaultValue: Int = 0): Int =
         this?.text?.toString()?.toInt() ?: defaultValue
 
@@ -257,5 +341,16 @@ class FormatActivity : AppCompatActivity() {
 
         return ""
     }
+
+    private fun String.toReadableName(): String {
+        var result = ""
+        this.split("_").forEach {
+            result += it.capitalize(Locale.US).replace("_", "") + " "
+        }
+
+        return result.trim()
+    }
+
+    private fun Spinner?.getSelectedValue() = this?.selectedItem?.toString() ?: ""
     //endregion
 }

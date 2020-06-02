@@ -560,27 +560,19 @@
             app:layout_constraintTop_toTopOf="@id/tvTextFontStyle" />
         <!--endregion-->
 
-        <Button
-            android:id="@+id/btnGenerateCode"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/generate_xml_style_button"
-            app:layout_constraintEnd_toStartOf="@id/view_divider"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvTextFontStyle" />
-
 
         <EditText
             android:layout_width="0dp"
             android:layout_height="150dp"
             android:autofillHints=""
             android:background="@color/AllWhite"
+            android:gravity="top"
             android:hint="@string/my_style_edit_text"
-            android:inputType="text"
+            android:inputType="textMultiLine"
             android:lines="5"
             app:layout_constraintEnd_toStartOf="@id/view_divider"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btnGenerateCode" />
+            app:layout_constraintTop_toBottomOf="@id/spTextFontStyle" />
         <!--endregion Config-->
 
         <View
@@ -621,6 +613,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:fontFamily="@font/gotham_book"
+            android:tag="gotham_book"
             android:text="@string/result"
             android:textColor="@color/AllWhite"
             android:visibility="invisible"
@@ -633,8 +627,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
-            android:textColor="@color/AllWhite"
+            android:fontFamily="@font/gotham_book"
+            android:tag="gotham_book"
             android:text="@string/button_text"
+            android:textColor="@color/AllWhite"
             android:visibility="gone"
             app:layout_constraintStart_toEndOf="@id/view_divider"
             app:layout_constraintTop_toBottomOf="@id/tvResult"

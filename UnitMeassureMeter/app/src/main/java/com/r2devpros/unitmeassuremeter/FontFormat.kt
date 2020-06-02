@@ -1,7 +1,22 @@
 package com.r2devpros.unitmeassuremeter
 
-class FontFormat(var stylename: String?, var pTop: Int?, var pStart: Int?, var pEnd: Int?, var pBottom: Int?
-                 , var mTop: Int?, var mStart: Int?, var mEnd: Int?, var mBottom: Int?, var textsize: Float?
-                 ,var tcolor: String?, var fontfamily: String?, var fontstyle: String?){
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 
-}
+@Parcelize
+data class FontFormat(
+    var text: String = "",
+    var styleName: String = "MyStyle",
+    var pTop: Int = 0,
+    var pStart: Int = 0,
+    var pEnd: Int = 0,
+    var pBottom: Int = 0,
+    var mTop: Int = 0,
+    var mStart: Int = 0,
+    var mEnd: Int = 0,
+    var mBottom: Int = 0,
+    var textSize: Float = 0f,
+    var tColor: String = "",
+    var fontFamily: String = "",
+    var fontStyle: String = ""
+) : Parcelable

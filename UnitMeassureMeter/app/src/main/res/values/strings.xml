@@ -48,6 +48,9 @@
     <string name="tv_font_style">Font Style:</string>
     <string name="text_view_config_label">TextView Configuration</string>
     <string name="button_config_label">Button Configuration</string>
+    <string name="generate_xml_style_button">Generate XML Style</string>
+    <string name="my_style_edit_text">My Style</string>
+    <string name="go_back_button">Go Back</string>
     <string-array name="size_type_array">
         <item>sp</item>
         <item>dp</item>

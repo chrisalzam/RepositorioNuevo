@@ -1,13 +1,13 @@
 package com.r2devpros.unitmeassuremeter
 
+import android.content.Intent
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_format.*
 
 class FormatActivity : AppCompatActivity() {
     //region Views
@@ -44,18 +44,19 @@ class FormatActivity : AppCompatActivity() {
     var widthDP: Double? = 0.0
     var heightDP: Double? = 0.0
     var dpi: Double? = 0.0
-    var istextview: Boolean? = null
-    var format: FontFormat? = null
+    var istextview: Boolean = false
+    var format = FontFormat()
     //endregion
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_format)
 
-        getInitInfo()
+        getDeviceScreenSize()
         bindTextViews()
         initViews()
-        initFontFormat()
+        initViewsWithInitialData()
+        bindEvents()
     }
 
     private fun initViews() {
@@ -64,7 +65,7 @@ class FormatActivity : AppCompatActivity() {
         tvWidthDp?.text = widthDP.toString()
         tvHeightDp?.text = heightDP.toString()
 
-        val tvEnable = istextview ?: true
+        val tvEnable = istextview
         if (tvEnable) {
             tvIsText?.text = getString(R.string.text_view_config_label)
             tvConfigResult?.visibility = View.VISIBLE
@@ -74,7 +75,29 @@ class FormatActivity : AppCompatActivity() {
         }
     }
 
-    private fun getInitInfo() {
+    private fun initViewsWithInitialData() {
+        //set every item with their corresponding style
+        //Get previous styles (if any) and apply them to current views
+        if (istextview) {
+            tvResult?.let {
+                etText?.setText(it.text.toString())
+                etPaddingStart?.setText(it.paddingStart.toString())
+                etPaddingTop?.setText(it.paddingTop.toString())
+                etPaddingBottom?.setText(it.paddingBottom.toString())
+                etPaddingEnd?.setText(it.paddingEnd.toString())
+            }
+        } else {
+            btnConfigResult?.let {
+                etText?.setText(it.text.toString())
+                etPaddingStart?.setText(it.paddingStart.toString())
+                etPaddingTop?.setText(it.paddingTop.toString())
+                etPaddingBottom?.setText(it.paddingBottom.toString())
+                etPaddingEnd?.setText(it.paddingEnd.toString())
+            }
+        }
+    }
+
+    private fun getDeviceScreenSize() {
         val bundle = intent.getBundleExtra(CONVERTER_FIRST_KEY)
 
         widthPX = bundle?.getDouble(CONVERTER_WIDTH_PIXEL_KEY, 0.0)
@@ -82,25 +105,27 @@ class FormatActivity : AppCompatActivity() {
         widthDP = bundle?.getDouble(CONVERTER_WIDTH_DP_KEY, 0.0)
         heightDP = bundle?.getDouble(CONVERTER_HEIGHT_DP_KEY, 0.0)
         dpi = bundle?.getDouble(CONVERTER_DPI, 0.0)
-        istextview = bundle?.getBoolean(ISTEXTVIEW, true)
+        istextview = bundle?.getBoolean(ISTEXTVIEW, true) ?: false
     }
 
-    private fun initFontFormat() {
-        format?.stylename = etStyle?.text.toString()
-        format?.pTop = tvConfigResult?.paddingTop
-        format?.pStart = tvConfigResult?.paddingStart
-        format?.pEnd = tvConfigResult?.paddingEnd
-        format?.pBottom = tvConfigResult?.paddingBottom
+    private fun setFontFormat() {
+        format.styleName = etStyle?.text.toString()
+        format.text = etText?.text.toString()
+        format.pTop = etPaddingTop?.text?.toString()?.toInt() ?: 0
+        format.pStart = etPaddingStart?.text?.toString()?.toInt() ?: 0
+        format.pEnd = etPaddingEnd?.text?.toString()?.toInt() ?: 0
+        format.pBottom = etPaddingBottom?.text?.toString()?.toInt() ?: 0
+
         val param = tvConfigResult?.layoutParams as ViewGroup.MarginLayoutParams
-        format?.mTop = param.topMargin
-        format?.mStart = param.marginStart
-        format?.mEnd = param.marginEnd
-        format?.mBottom = param.bottomMargin
-        format?.textsize = tvConfigResult?.textSize
+        format.mTop = param.topMargin
+        format.mStart = param.marginStart
+        format.mEnd = param.marginEnd
+        format.mBottom = param.bottomMargin
+        format.textSize = tvConfigResult?.textSize ?: 8f
         //format?.tcolor = tvConfigResult?.currentTextColor
         val decColor = tvConfigResult?.currentTextColor
         val hexColor = String.format("#%06X", 0xFFFFFF and 2584)
-        format?.tcolor = hexColor
+        format.tColor = hexColor
 
     }
 
@@ -130,24 +155,35 @@ class FormatActivity : AppCompatActivity() {
         chkT = findViewById(R.id.chkTransparent)
         spFontFamily = findViewById(R.id.spTextFontFamily)
         spFontStyle = findViewById(R.id.spTextFontStyle)
+    }
 
-        etStyle?.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(p0: Editable?) {
-                Log.d(
-                    "FormatActivity",
-                    "${format?.stylename}, ${tvConfigResult?.paddingTop}, ${format?.mTop}," +
-                            "${format?.textsize}, ${format?.tcolor}"
+    private fun bindEvents() {
+        Log.d("FormatActivity_TAG", "bindEvents: ")
+        val onFocused: ((View, Boolean) -> Unit) = { v, hasFocus ->
+            if (!hasFocus) {
+                Log.d("FormatActivity_TAG", "bindEvents: onLostFocus: $v")
+                setFontFormat()
+                FontApply.apply(
+                    fontFormat = format,
+                    tv = tvResult,
+                    btn = btnConfigResult
                 )
             }
+        }
 
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+        etText?.setOnFocusChangeListener(onFocused)
+        etPaddingStart?.setOnFocusChangeListener(onFocused)
+        etPaddingTop?.setOnFocusChangeListener(onFocused)
+        etPaddingBottom?.setOnFocusChangeListener(onFocused)
+        etPaddingEnd?.setOnFocusChangeListener(onFocused)
 
-            }
+        findViewById<Button>(R.id.btnGoBack).setOnClickListener {
+            Log.d("FormatActivity_TAG", "bindEvents: goBack")
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra(if (istextview) FORMAT_DATA_TEXT else FORMAT_DATA_BUTTON, format)
 
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
-            }
-        })
+            startActivity(intent)
+        }
     }
 
 

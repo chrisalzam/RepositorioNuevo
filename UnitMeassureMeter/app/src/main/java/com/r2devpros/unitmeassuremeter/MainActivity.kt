@@ -51,10 +51,27 @@ class MainActivity : AppCompatActivity() {
 
         bindTextViews()
         bindButtonViews()
+
+        tryToGetFormatData()
     }
     //endregion
 
     //region functions
+    private fun tryToGetFormatData() {
+        Log.d("MainActivity_TAG", "tryToGetFormatData: ")
+        val formatToApplyToText = intent.getParcelableExtra<FontFormat>(FORMAT_DATA_TEXT)
+
+        formatToApplyToText?.let {
+            FontApply.apply(it, tvResult)
+        }
+
+        val formatToApplyToButton = intent.getParcelableExtra<FontFormat>(FORMAT_DATA_BUTTON)
+
+        formatToApplyToButton?.let {
+            FontApply.apply(it, btnText)
+        }
+    }
+
     private fun initValues() {
         tvWidthPx?.text = width.toString()
         tvHeightPx?.text = height.toString()
@@ -208,7 +225,7 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    private fun newWindowData(istv: Boolean) {
+    private fun newWindowData(isTV: Boolean) {
         val intent = Intent(this, FormatActivity::class.java)
         intent.putExtra(CONVERTER_FIRST_KEY, Bundle().apply {
             putDouble(CONVERTER_WIDTH_PIXEL_KEY, width.toDouble())
@@ -216,7 +233,7 @@ class MainActivity : AppCompatActivity() {
             putDouble(CONVERTER_WIDTH_DP_KEY, widthDP.toDouble())
             putDouble(CONVERTER_HEIGHT_DP_KEY, heightDP.toDouble())
             putDouble(CONVERTER_DPI, dpi.toDouble())
-            putBoolean(ISTEXTVIEW, istv)
+            putBoolean(ISTEXTVIEW, isTV)
         })
         startActivity(intent)
     }

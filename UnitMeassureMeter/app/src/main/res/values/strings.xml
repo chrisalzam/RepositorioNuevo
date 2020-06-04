@@ -52,6 +52,7 @@
     <string name="my_style_edit_text">My Style</string>
     <string name="go_back_button">Go Back</string>
     <string name="tv_background_color">Background Color</string>
+    <string name="get_code_btn">Get Code</string>
     <string-array name="size_type_array">
         <item>sp</item>
         <item>dp</item>

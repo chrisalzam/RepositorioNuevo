@@ -15,6 +15,7 @@ import kotlinx.android.synthetic.main.activity_format.view.*
 import java.util.*
 
 
+@Suppress("UNUSED_PARAMETER")
 @ExperimentalStdlibApi
 class FormatActivity : AppCompatActivity() {
     //region Views
@@ -65,6 +66,8 @@ class FormatActivity : AppCompatActivity() {
         initViews()
         initViewsWithInitialData()
         bindEvents()
+
+
     }
 
     //region binding
@@ -124,10 +127,9 @@ class FormatActivity : AppCompatActivity() {
                 etPE?.setText(progress.toString())
 
                 etSize?.setSelection(seekBar?.progress.toString().length)
-                if(istextview){
+                if (istextview) {
                     tvConfigResult?.setPadding(progress)
-                }
-                else{
+                } else {
                     btnConfigResult?.setPadding(progress)
                 }
 
@@ -155,10 +157,9 @@ class FormatActivity : AppCompatActivity() {
                 etSize?.setSelection(seekBar?.progress.toString().length)
                 tvResult?.textSize = seekBar?.progress.toString().toFloat()
 
-                if(istextview){
+                if (istextview) {
                     tvResult?.textSize = seekBar?.progress.toString().toFloat()
-                }
-                else{
+                } else {
                     btnConfigResult?.textSize = seekBar?.progress.toString().toFloat()
                 }
             }
@@ -186,10 +187,9 @@ class FormatActivity : AppCompatActivity() {
                 etMB?.setText(progress.toString())
                 etME?.setText(progress.toString())
 
-                if(istextview){
+                if (istextview) {
                     setMargins(tvConfigResult as View, progress, progress, progress, progress)
-                }
-                else{
+                } else {
                     setMargins(btnConfigResult as View, progress, progress, progress, progress)
                 }
 
@@ -477,5 +477,32 @@ class FormatActivity : AppCompatActivity() {
     }
 
     private fun Spinner?.getSelectedValue() = this?.selectedItem?.toString() ?: ""
+
+    fun getXMLClick(view: View) {
+        Log.d("FormatActivity_TAG", "Name ${etStyle?.text}")
+        val str = "<style name=\"${etStyle?.text}\">\n" +
+                "<item name=\"android:paddingStart\">${etPS?.text}</item>\n" +
+                "<item name=\"android:paddingTop\">${etPT?.text}</item>\n" +
+                "<item name=\"android:paddingBottom\">${etPB?.text}</item>\n" +
+                "<item name=\"android:paddingEnd\">${etPE?.text}\n" +
+                "<item name=\"android:layout_marginStart\">${etMS?.text}</item>\n" +
+                "<item name=\"android:layout_marginTop\">${etMT?.text}</item>\n" +
+                "<item name=\"android:layout_marginBottom\">${etMB?.text}</item>\n" +
+                "<item name=\"android:layout_marginEnd\">${etME?.text}</item>\n" +
+                "<item name=\"android:textSize\">${etSize?.text}</item>\n" +
+                "<item name=\"android:textColor\">${etTColor?.text}</item>\n" +
+                if (chkT?.isChecked != true) {
+                    "<item name=\"android:background\">${etBackgroundColor?.text}</item>\n" +
+                    "<item name=\"fontFamily\">${spFontFamily?.selectedItem}</item>\n" +
+                            "<item name=\"android:textStyle\">${spFontStyle?.selectedItem}</item>\n" +
+                            "</style>"
+                } else {
+                    "<item name=\"fontFamily\">${spFontFamily?.selectedItem}</item>\n" +
+                            "<item name=\"android:textStyle\">${spFontStyle?.selectedItem}</item>\n" +
+                            "</style>"
+                }
+
+        etCode.setText(str)
+    }
 //endregion
 }

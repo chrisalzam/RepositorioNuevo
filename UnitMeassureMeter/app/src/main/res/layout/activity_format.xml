@@ -553,26 +553,38 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginStart="15dp"
             app:layout_constraintBottom_toBottomOf="@id/tvTextFontStyle"
             app:layout_constraintEnd_toEndOf="@id/chkBackgroundTransparent"
-            app:layout_constraintStart_toEndOf="@id/barrier1"
+            app:layout_constraintStart_toStartOf="@id/etTextColor"
             app:layout_constraintTop_toTopOf="@id/tvTextFontStyle" />
         <!--endregion-->
 
-
         <EditText
+            android:id="@+id/etCode"
             android:layout_width="0dp"
             android:layout_height="150dp"
             android:autofillHints=""
             android:background="@color/AllWhite"
             android:gravity="top"
             android:hint="@string/my_style_edit_text"
+            android:scrollbars="vertical"
             android:inputType="textMultiLine"
             android:lines="5"
             app:layout_constraintEnd_toStartOf="@id/view_divider"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/spTextFontStyle" />
+
+        <Button
+            android:id="@+id/btnGetXML"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/get_code_btn"
+            android:onClick="getXMLClick"
+            app:layout_constraintStart_toEndOf="@id/spTextFontFamily"
+            app:layout_constraintEnd_toStartOf="@id/view_divider"
+            app:layout_constraintTop_toTopOf="@id/spTextFontFamily"
+            app:layout_constraintBottom_toBottomOf="@id/spTextFontStyle"
+            />
         <!--endregion Config-->
 
         <View

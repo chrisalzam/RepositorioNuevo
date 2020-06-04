@@ -43,7 +43,6 @@ class ConvertActivity : AppCompatActivity() {
         tvHeightPx?.text = heightPX.toString()
         tvWidthDp?.text = widthDP.toString()
         tvHeightDp?.text = heightDP.toString()
-
     }
 
 

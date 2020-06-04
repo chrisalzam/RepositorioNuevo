@@ -8,10 +8,7 @@ import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.marginBottom
-import androidx.core.view.marginEnd
-import androidx.core.view.marginStart
-import androidx.core.view.marginTop
+import androidx.core.view.*
 import kotlinx.android.synthetic.main.activity_format.*
 import java.util.*
 
@@ -113,6 +110,36 @@ class FormatActivity : AppCompatActivity() {
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_item)
             spFontStyle?.adapter = adapter
         }
+
+        skPadding?.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                Log.d("FormatActivity_TAG", "onProgressChanged: ")
+                etPS?.setText(progress.toString())
+                etPT?.setText(progress.toString())
+                etPB?.setText(progress.toString())
+                etPE?.setText(progress.toString())
+
+                etSize?.setSelection(seekBar?.progress.toString().length)
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+                Log.d("FormatActivity_TAG", "onStartTrackingTouch: ")
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                Log.d("FormatActivity_TAG", "onStopTrackingTouch: ")
+                etPS?.setText(seekBar?.progress.toString())
+                etPT?.setText(seekBar?.progress.toString())
+                etPB?.setText(seekBar?.progress.toString())
+                etPE?.setText(seekBar?.progress.toString())
+
+                //default usa SP
+                tvConfigResult?.setPadding(seekBar?.progress ?: 0)
+                etPS?.setSelection(seekBar?.progress.toString().length)
+
+            }
+        })
+
     }
 
     private fun bindEvents() {
@@ -180,7 +207,7 @@ class FormatActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
-    //endregion
+//endregion
 
     private fun initViews() {
         tvWidthPx?.text = widthPX.toString()
@@ -352,5 +379,5 @@ class FormatActivity : AppCompatActivity() {
     }
 
     private fun Spinner?.getSelectedValue() = this?.selectedItem?.toString() ?: ""
-    //endregion
+//endregion
 }

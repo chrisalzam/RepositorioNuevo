@@ -6,11 +6,14 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.ViewGroup.MarginLayoutParams
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.*
 import kotlinx.android.synthetic.main.activity_format.*
+import kotlinx.android.synthetic.main.activity_format.view.*
 import java.util.*
+
 
 @ExperimentalStdlibApi
 class FormatActivity : AppCompatActivity() {
@@ -110,16 +113,24 @@ class FormatActivity : AppCompatActivity() {
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_item)
             spFontStyle?.adapter = adapter
         }
-
+//region SeekBars
         skPadding?.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 Log.d("FormatActivity_TAG", "onProgressChanged: ")
+
                 etPS?.setText(progress.toString())
                 etPT?.setText(progress.toString())
                 etPB?.setText(progress.toString())
                 etPE?.setText(progress.toString())
 
                 etSize?.setSelection(seekBar?.progress.toString().length)
+                if(istextview){
+                    tvConfigResult?.setPadding(progress)
+                }
+                else{
+                    btnConfigResult?.setPadding(progress)
+                }
+
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
@@ -133,20 +144,100 @@ class FormatActivity : AppCompatActivity() {
                 etPB?.setText(seekBar?.progress.toString())
                 etPE?.setText(seekBar?.progress.toString())
 
-                //default usa SP
-                tvConfigResult?.setPadding(seekBar?.progress ?: 0)
                 etPS?.setSelection(seekBar?.progress.toString().length)
-
             }
         })
 
+        skSize?.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                Log.d("MainActivity_TAG", "onProgressChanged: ")
+                etSize?.setText(progress.toString())
+                etSize?.setSelection(seekBar?.progress.toString().length)
+                tvResult?.textSize = seekBar?.progress.toString().toFloat()
+
+                if(istextview){
+                    tvResult?.textSize = seekBar?.progress.toString().toFloat()
+                }
+                else{
+                    btnConfigResult?.textSize = seekBar?.progress.toString().toFloat()
+                }
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+                Log.d("MainActivity_TAG", "onStartTrackingTouch: ")
+
+
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                Log.d("MainActivity_TAG", "onStopTrackingTouch: ${seekBar?.progress.toString()}")
+                //etSize?.setText(seekBar?.progress.toString())
+
+                //tvResult?.textSize = seekBar?.progress.toString().toFloat()
+                etSize?.setSelection(seekBar?.progress.toString().length)
+            }
+        })
+
+        skMargin?.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                Log.d("FormatActivity_TAG", "onProgressChanged: ")
+                etMS?.setText(progress.toString())
+                etMT?.setText(progress.toString())
+                etMB?.setText(progress.toString())
+                etME?.setText(progress.toString())
+
+                if(istextview){
+                    setMargins(tvConfigResult as View, progress, progress, progress, progress)
+                }
+                else{
+                    setMargins(btnConfigResult as View, progress, progress, progress, progress)
+                }
+
+//                val margin = seekBar?.progress ?: 0
+//                if (tvConfigResult?.layoutParams is MarginLayoutParams) {
+//                    val p = tvConfigResult?.layoutParams as MarginLayoutParams
+//                    p.setMargins(margin, margin, margin, margin)
+//                    tvConfigResult?.requestLayout()
+//                }
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+                Log.d("FormatActivity_TAG", "onStartTrackingTouch: ")
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                Log.d("FormatActivity_TAG", "onStopTrackingTouch: ")
+                etMS?.setSelection(seekBar?.progress.toString().length)
+
+//                val margin = seekBar?.progress ?: 0
+//                if (tvConfigResult?.layoutParams is MarginLayoutParams) {
+//                    val p = tvConfigResult?.layoutParams as MarginLayoutParams
+//                    p.setMargins(margin, margin, margin, margin)
+//                    tvConfigResult?.requestLayout()
+//                }
+            }
+        })
+
+//endregion
+    }
+
+    private fun setMargins(v: View, l: Int, t: Int, r: Int, b: Int) {
+        if (v.layoutParams is MarginLayoutParams) {
+            val p = v.layoutParams as MarginLayoutParams
+            p.setMargins(l, t, r, b)
+            v.requestLayout()
+        }
     }
 
     private fun bindEvents() {
         Log.d("FormatActivity_TAG", "bindEvents: ")
+
         val onFocused: ((View, Boolean) -> Unit) = { v, hasFocus ->
             if (!hasFocus) {
                 Log.d("FormatActivity_TAG", "bindEvents: onLostFocus: $v")
+
+                skSize?.progress = etSize.getIntValue()
+
                 setFontFormat()
                 FontApply.apply(
                     fontFormat = format,
@@ -243,6 +334,7 @@ class FormatActivity : AppCompatActivity() {
             tvResult?.let {
                 etText.setValue(it.text)
                 etTextSize.setValue(it.textSize)
+                skSize?.progress = it.textSize.toInt()
                 etTextColor.setValue(it.getColorHex())
 
                 val fontFamilyPosition = spFontFamily.getFontFamilyPosition(it.tag)
@@ -257,6 +349,7 @@ class FormatActivity : AppCompatActivity() {
             btnConfigResult?.let {
                 etText.setValue(it.text)
                 etTextSize.setValue(it.textSize)
+                skSize?.progress = it.textSize.toInt()
                 etTextColor.setValue(it.getColorHex())
 
                 val fontFamilyPosition = spFontFamily.getFontFamilyPosition(it.tag)
@@ -284,6 +377,11 @@ class FormatActivity : AppCompatActivity() {
             etME.setValue(it.marginEnd)
             //endregion
 
+            //region SeekBars
+            skPadding?.progress = it.paddingStart
+            skMargin?.progress = it.marginTop
+            //endregion
+
             etBackgroundColor.setValue(it.getBackgroundColorHex())
             chkT?.isChecked = (etBackgroundColor?.text.isNullOrEmpty())
         }
@@ -309,7 +407,7 @@ class FormatActivity : AppCompatActivity() {
 
         format.textSize = etTextSize.getFloatValue(8f)
         format.tColor = etTextColor.getText("#FFFFFF")
-        format.backgroundColor = etBackgroundColor.getText("")
+        format.backgroundColor = etBackgroundColor.getText("#123456")
         format.backgroundTransparent = chkT?.isChecked ?: false
         format.fontFamily = spFontFamily?.selectedItem?.toString()?.let {
             Fonts.fromDescription(it)?.resourceName ?: ""

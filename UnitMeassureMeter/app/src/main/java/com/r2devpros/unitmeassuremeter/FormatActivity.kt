@@ -1,5 +1,9 @@
 package com.r2devpros.unitmeassuremeter
 
+import android.R.attr.label
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.content.Intent
 import android.graphics.Typeface
 import android.graphics.drawable.ColorDrawable
@@ -11,7 +15,6 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.*
 import kotlinx.android.synthetic.main.activity_format.*
-import kotlinx.android.synthetic.main.activity_format.view.*
 import java.util.*
 
 
@@ -501,6 +504,14 @@ class FormatActivity : AppCompatActivity() {
                             "<item name=\"android:textStyle\">${spFontStyle?.selectedItem.toString().toLowerCase()}</item>\n" +
                             "</style>"
                 }
+
+        //Copy to Clipboard
+        val clipboard: ClipboardManager = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+        val clip = ClipData.newPlainText("codeClip", str)
+        clipboard.setPrimaryClip(clip)
+
+        //Toast copied
+        Toast.makeText(this, "Copied to Clipboard!", Toast.LENGTH_SHORT).show()
 
         etCode.setText(str)
     }

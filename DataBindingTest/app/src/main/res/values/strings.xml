@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">DataBindingTest</string>
+    <string name="app_name">Data Binding Test</string>
+    <string name="two_way_data_binding">Two Way Data binding Name</string>
+    <string name="get_values">Get Values</string>
+    <string name="last_name">Last Name</string>
+    <string name="age">Age</string>
+    <string name="set_values_from_server">Set Values From Server</string>
+    <string name="you_are_allowed_to_drink">You are allowed to Drink</string>
+    <string name="you_are_not_allowed_to_drink">You are not allowed to drink</string>
 </resources>

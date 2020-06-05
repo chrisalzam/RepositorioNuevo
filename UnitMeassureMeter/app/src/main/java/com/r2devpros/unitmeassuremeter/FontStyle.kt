@@ -4,10 +4,10 @@ import android.graphics.Typeface
 
 @Suppress("unused")
 enum class FontStyle(val description: String, val value: Int) {
-    NORMAL("Normal", Typeface.NORMAL),
-    BOLD("Bold", Typeface.BOLD),
-    ITALIC("Italic", Typeface.ITALIC),
-    DEFAULT("Normal", Typeface.NORMAL)
+    NORMAL("normal", Typeface.NORMAL),
+    BOLD("bold", Typeface.BOLD),
+    ITALIC("italic", Typeface.ITALIC),
+    DEFAULT("normal", Typeface.NORMAL)
     ;
 
     companion object {

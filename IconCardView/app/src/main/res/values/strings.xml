@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">IconCardView</string>
+    <string name="icon_1">Icono #1</string>
+    <string name="icon_2">Icono #2</string>
+    <string name="icon_3">Icono #3</string>
+
+</resources>

@@ -12,7 +12,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cdIcon1"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:layout_margin="5dp"
         app:cardBackgroundColor="#1b1b1b">
 
@@ -55,7 +55,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cdIcon3"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="5dp"
         app:cardBackgroundColor="#1b1b1b">

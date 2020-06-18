@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import kotlin.math.log
 
 
 class MainActivity : AppCompatActivity() {
@@ -22,29 +23,25 @@ class MainActivity : AppCompatActivity() {
         ivIcon2 = findViewById(R.id.ivIcon2)
         ivIcon2?.setImageDrawable(resources.getDrawable(R.drawable.ic_chess_queen, null))
 
-//        val displayMetrics = DisplayMetrics()
-//        windowManager.defaultDisplay.getMetrics(displayMetrics)
-//
-//        val width = displayMetrics.widthPixels
-//        val height = displayMetrics.heightPixels
-
         ivIcon3 = findViewById(R.id.ivIcon3)
-        var d = resources.getDrawable(R.drawable.ic_cloud, null)
+        val d = resources.getDrawable(R.drawable.ic_cloud, null)
         ivIcon3?.background = d
-        val height = ivIcon3?.layoutParams?.height
-        ivIcon3?.layoutParams?.width = (d.intrinsicWidth / d.intrinsicHeight) * height!!
+        ivIcon3?.apply {
+            Log.d("TAG_MainActivity","IVICON HEIGHT: ${ivIcon3?.layoutParams?.height} IVICON TAG: ${ivIcon3?.tag}")
+            layoutParams.width = (d.intrinsicWidth.toDouble() / d.intrinsicHeight * layoutParams.height).toInt()
+        }
 
-        //ivIcon3?.layoutParams?.width = 250
+        ivIcon3?.let {
+            Log.d(
+                "TAGMainActivityIVICON", "WIDTH ${it.layoutParams.width} HEIGHT ${it.layoutParams.height}, " +
+                        "INTRINSIC WIDTH ${d.intrinsicWidth}, INTRINSIC HEIGHT ${d.intrinsicHeight}, " +
+                        "RESULT: ${d.intrinsicWidth / d.intrinsicHeight * it.tag.toString().toInt()}"
+            )
+        }
+    }
 
-        //Log.d("TAGMainActivityIVICON","HEIGHT calculated is ${ivIcon3?.layoutParams?.height}")
-        //Log.d("TAGMainActivityIVICON","WIDTH calculated is ${ivIcon3?.layoutParams?.width}")
-
-
-        //Log.d("TAGMainActivityDRAWABLE","WIDTH ${d.intrinsicWidth} HEIGHT ${d.intrinsicHeight}")
-        Log.d("TAGMainActivityIVICON","WIDTH ${ivIcon3?.layoutParams?.width} HEIGHT ${ivIcon3?.layoutParams?.height}")
-
-        //val layoutParams = LinearLayout.LayoutParams(100, 100)
-        //ivIcon3?.layoutParams = ConstraintLayout.LayoutParams(100, 100)
+    override fun onResume() {
+        super.onResume()
 
     }
 }

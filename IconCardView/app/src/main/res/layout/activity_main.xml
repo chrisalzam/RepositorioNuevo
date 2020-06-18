@@ -96,6 +96,7 @@
             android:padding="10dp">
 
             <ImageView
+                android:tag="263"
                 android:id="@+id/ivIcon3"
                 android:layout_width="wrap_content"
                 android:layout_height="100dp"
@@ -104,7 +105,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:contentDescription="@string/icon_3"
-                tools:background="@drawable/ic_brain"
+                tools:background="@drawable/ic_cloud"
                 />
 
         <TextView

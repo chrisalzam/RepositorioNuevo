@@ -24,6 +24,11 @@ allprojects {
     }
 }
 
+
+ext {
+    koin_version = "2.1.6"
+}
+
 task clean(type: Delete) {
     delete rootProject.buildDir
 }

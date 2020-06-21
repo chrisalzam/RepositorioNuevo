@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
         fillListView()
     }
 
+
     private fun fillListView() {
         Log.d("MainActivity_TAG", "fillListView: ")
 

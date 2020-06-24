@@ -1,9 +1,3 @@
 package com.r2devpros.myrestapptest.presentation
 
-const val GOOGLE_MAP_FIRST_KEY="MAP KEY"
-const val GOOGLE_MAP_LATITUDE_STORE_KEY="LATITUDE"
-const val GOOGLE_MAP_LONGITUDE_STORE_KEY="LONGITUDE"
-const val GOOGLE_MAP_ID_STORE_KEY="ID"
-const val GOOGLE_MAP_PHONE_STORE_KEY="PHONE"
-const val GOOGLE_MAP_ADDRESS_STORE_KEY="ADDRESS"
-const val GOOGLE_MAP_HOURS_SERVICE_STORE_KEY = "HOURS"
+const val GOOGLE_MAP_STORE = "google-maps-store"

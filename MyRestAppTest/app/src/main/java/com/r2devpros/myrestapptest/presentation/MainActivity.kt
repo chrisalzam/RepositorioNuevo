@@ -50,18 +50,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun onStoreClicked(store: Store) {
         Timber.d("MainActivity_TAG: onStoreClicked: $store")
-        val intent = Intent(this, StoreMapActivity::class.java)
-        intent.putExtra(GOOGLE_MAP_FIRST_KEY, Bundle().apply {
-            putString(GOOGLE_MAP_ID_STORE_KEY, store.id)
-            putString(GOOGLE_MAP_ADDRESS_STORE_KEY, store.address)
-            putString(GOOGLE_MAP_HOURS_SERVICE_STORE_KEY, store.serviceHoursDescription)
-            putString(GOOGLE_MAP_PHONE_STORE_KEY, store.phone)
-            putDouble(GOOGLE_MAP_LATITUDE_STORE_KEY, store.latitude)
-            putDouble(GOOGLE_MAP_LONGITUDE_STORE_KEY, store.longitude)
-        })
+        val intent = Intent(this, StoreMapActivity::class.java).apply {
+            putExtra(GOOGLE_MAP_STORE, store)
+        }
 
         startActivity(intent)
-
     }
 
     override fun onResume() {

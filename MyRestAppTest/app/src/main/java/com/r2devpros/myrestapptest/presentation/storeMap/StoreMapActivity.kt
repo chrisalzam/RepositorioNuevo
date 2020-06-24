@@ -10,19 +10,14 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.r2devpros.myrestapptest.R
+import com.r2devpros.myrestapptest.model.Store
 import com.r2devpros.myrestapptest.presentation.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
 class StoreMapActivity : AppCompatActivity(), OnMapReadyCallback {
-
+    private val viewModel by viewModel<StoreMapViewModel>()
     private lateinit var mMap: GoogleMap
-
-    private var latitudeStore = 0.0
-    private var longitudeStore = 0.0
-    private var idStore: String? = ""
-    private var addressStore: String? = ""
-    private var phoneStore: String? = ""
-    private var serviceStore: String? = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,21 +28,12 @@ class StoreMapActivity : AppCompatActivity(), OnMapReadyCallback {
         mapFragment.getMapAsync(this)
 
         getData()
-        Timber.d("StoreMapActivity_TAG: onCreate: $latitudeStore, $longitudeStore")
     }
 
     private fun getData() {
-        val bundle = intent.getBundleExtra(GOOGLE_MAP_FIRST_KEY)
-        idStore = bundle?.getString(GOOGLE_MAP_ID_STORE_KEY, "")
-        addressStore = bundle?.getString(GOOGLE_MAP_ADDRESS_STORE_KEY, "")
-        phoneStore = bundle?.getString(GOOGLE_MAP_PHONE_STORE_KEY, "")
-        serviceStore = bundle?.getString(GOOGLE_MAP_HOURS_SERVICE_STORE_KEY, "")
-        latitudeStore.apply {
-            bundle?.getDouble(GOOGLE_MAP_LATITUDE_STORE_KEY, 0.0)
-        }
-        longitudeStore.apply {
-            bundle?.getDouble(GOOGLE_MAP_LONGITUDE_STORE_KEY, 0.0)
-        }
+        Timber.d("StoreMapActivity: getData: ")
+        viewModel.store = intent.getParcelableExtra(GOOGLE_MAP_STORE)
+        Timber.d("StoreMapActivity: getData: lat: ${viewModel.store?.latitude}, lon: ${viewModel.store?.longitude}")
     }
 
     /**
@@ -59,16 +45,20 @@ class StoreMapActivity : AppCompatActivity(), OnMapReadyCallback {
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
      */
-    override fun onMapReady(googleMap: GoogleMap) {
-        mMap = googleMap
-
-        // Add a marker in Sydney and move the camera
-        val sydney = LatLng(latitudeStore, longitudeStore)
+    /*
         //- Generar llave de Google Maps
         //- Actualizar Google_maos_api.xml
         //- Modify response from API (Rest API /Server Repository) StoresByZipCodeResponse.kt
         //-
-        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+     */
+    override fun onMapReady(googleMap: GoogleMap) {
+        mMap = googleMap
+
+        val currentStore = viewModel.store ?: return
+
+        // Add a marker and move the camera
+        val storeLocation = LatLng(currentStore.latitude, currentStore.longitude)
+        mMap.addMarker(MarkerOptions().position(storeLocation).title(currentStore.id))
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(storeLocation, 16.0f))
     }
 }

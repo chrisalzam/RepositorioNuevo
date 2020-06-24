@@ -17,7 +17,6 @@ data class StoresByZipCodeResponse(
             @Json(name = "Carryout") val Carryout: String,
             @Json(name = "Delivery") val Delivery: String,
             @Json(name = "DriveUpCarryout") val DriveUpCarryout: String
-
         )
 
         data class StoreCoordinatesClass(

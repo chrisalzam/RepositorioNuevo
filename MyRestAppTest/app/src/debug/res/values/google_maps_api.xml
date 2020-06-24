@@ -1,0 +1,24 @@
+<resources>
+    <!--
+    TODO: Before you run your application, you need a Google Maps API key.
+
+    To get one, follow this link, follow the directions and press "Create" at the end:
+
+    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=A6:E7:CC:94:DC:95:95:1A:55:2B:23:B8:97:06:8B:FB:27:7D:76:18%3Bcom.r2devpros.myrestapptest.presentation.storeMap
+
+    You can also add your credentials to an existing key, using these values:
+
+    Package name:
+    com.r2devpros.myrestapptest.presentation.storeMap
+
+    SHA-1 certificate fingerprint:
+    A6:E7:CC:94:DC:95:95:1A:55:2B:23:B8:97:06:8B:FB:27:7D:76:18
+
+    Alternatively, follow the directions here:
+    https://developers.google.com/maps/documentation/android/start#get-key
+
+    Once you have your key (it starts with "AIza"), replace the "google_maps_key"
+    string in this file.
+    -->
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyDFFy0hfW2H-NHmbo8ks3zd-NVeQIHQBzM</string>
+</resources>

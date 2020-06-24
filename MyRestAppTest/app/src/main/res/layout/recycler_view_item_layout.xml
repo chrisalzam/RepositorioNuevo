@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/tvIdStore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="001" />
+
+    <TextView
+        android:id="@+id/tvAddressStore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvIdStore"
+        tools:text="Veterans Dr 1234" />
+
+    <TextView
+        android:id="@+id/tvPhoneStore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvAddressStore"
+        tools:text="555 555 5555" />
+
+    <TextView
+        android:id="@+id/tvServiceHoursStore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvPhoneStore"
+        tools:text="8:00 - 21:00 hrs." />
+
+    <TextView
+        android:id="@+id/tvLatitudeStore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvServiceHoursStore"
+        tools:text="29.417817" />
+
+    <TextView
+        android:id="@+id/tvLongitudeStore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@id/tvLatitudeStore"
+        app:layout_constraintTop_toBottomOf="@id/tvServiceHoursStore"
+        tools:text=", -98.634925" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

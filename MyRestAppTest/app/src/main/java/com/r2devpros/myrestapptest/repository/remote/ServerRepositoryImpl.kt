@@ -18,7 +18,9 @@ class ServerRepositoryImpl(
                         id = responseStore.StoreID,
                         phone = responseStore.Phone,
                         address = responseStore.AddressDescription,
-                        serviceHoursDescription = responseStore.ServiceHoursDescription.let { shd -> "carryout: ${shd.Carryout}, delivery: ${shd.Delivery}" }
+                        serviceHoursDescription = responseStore.ServiceHoursDescription.let { shd -> "carryout: ${shd.Carryout}, delivery: ${shd.Delivery}" },
+                        latitude = responseStore.StoreCoordinates.StoreLatitude,
+                        longitude = responseStore.StoreCoordinates.StoreLongitude
                     )
                 }
             )

@@ -16,6 +16,7 @@ import timber.log.Timber
 class LocatorViewModel(
     private val serverRepository: ServerRepository
 ) : BaseViewModel() {
+
     @get:Bindable
     var availableStores = emptyList<Store>()
         set(value) {

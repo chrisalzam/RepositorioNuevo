@@ -95,4 +95,8 @@ dependencies {
     implementation "org.koin:koin-androidx-scope:$koin"
     implementation "org.koin:koin-androidx-viewmodel:$koin"
     //endregion
+
+    //region Exoplayer
+    implementation "com.google.android.exoplayer:exoplayer:$exoplayer"
+    //end region
 }

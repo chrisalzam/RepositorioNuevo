@@ -8,6 +8,7 @@ import com.example.urbandictionaryapp.repository.ApiResult
 import com.example.urbandictionaryapp.repository.remote.ServerRepository
 import com.example.urbandictionaryapp.repository.runOnResult
 import timber.log.Timber
+import java.util.*
 
 class MainViewModel(
     private val serverRepository: ServerRepository
@@ -34,8 +35,6 @@ class MainViewModel(
 
         }
 
-    val availableDefinitionsCount: String
-        get() = availableDefinitions.size.toString()
 
     fun getDefinitions() = background {
         Timber.d("MainViewModel_TAG: getDefinitions: ")
@@ -51,5 +50,12 @@ class MainViewModel(
         }
     }
 
-
+    fun sortByDefinitions(moreLikes: Boolean = true) {
+        Timber.d("MainViewModel_TAG: sortByDefinitions: sortByDefinitions")
+        availableDefinitions = if (moreLikes) {
+            availableDefinitions.sortedByDescending { it.thumbsUp }
+        } else {
+            availableDefinitions.sortedByDescending { it.thumbsDown }
+        }
+    }
 }

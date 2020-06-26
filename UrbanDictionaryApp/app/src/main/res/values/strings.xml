@@ -2,4 +2,8 @@
     <string name="app_name">UrbanDictionaryApp</string>
     <string name="search_for_a_definition">Search for a definition</string>
     <string name="tv_sort_by">Sort by</string>
+    <string name="iv_sort_by_dislikes">Sort by dislikes</string>
+    <string name="iv_sort_by_likes">Sort by likes</string>
+    <string name="by_string_format">By %1$s</string>
+    <string name="ie_string_format">i.e.\n%1$s</string>
 </resources>

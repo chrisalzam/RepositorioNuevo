@@ -3,6 +3,7 @@ package com.example.urbandictionaryapp.presentation
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.library.baseAdapters.BR
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -11,6 +12,7 @@ import com.example.urbandictionaryapp.R
 import com.example.urbandictionaryapp.databinding.ActivityMainBinding
 import com.example.urbandictionaryapp.model.Definition
 import com.example.urbandictionaryapp.presentation.util.MyRecyclerViewAdapter
+import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
@@ -27,9 +29,9 @@ class MainActivity : AppCompatActivity() {
         layoutBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         layoutBinding.lifecycleOwner = this
         layoutBinding.viewModel = viewModel
-
         viewModel.getDefinitions()
         wireOnPropertyChanged()
+
         fillRecyclerView()
     }
 
@@ -53,6 +55,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun wireOnPropertyChanged() {
         Timber.d("MainActivity_TAG: wireOnPropertyChanged: ")
+
 
         viewModel.onPropertyChanged(BR.availableDefinitions) {
             Timber.d("MainActivity_TAG: wireOnPropertyChanged: availableDefinitions: ${viewModel.availableDefinitions.size}")

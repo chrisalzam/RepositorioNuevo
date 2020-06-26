@@ -47,27 +47,24 @@ class MyRecyclerViewAdapter(
     override fun getItemCount(): Int = itemList.size
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        Timber.d("MyRecyclerViewAdapter_TAG: onBindViewHolder: ")
+        //Timber.d("MyRecyclerViewAdapter_TAG: onBindViewHolder: ")
         //holder.tvDefinitionId.text = itemList[position].id.toString()
         holder.tvDefinitionWord.text = itemList[position].word
         holder.tvDefinition.text = itemList[position].definition
         //holder.tvDefinitionPermalink.text = itemList[position].permalink
         holder.tvDefinitionThumbsUp.text = itemList[position].thumbsUp.toString()
         //holder.tvSoundURL.text = itemList[position].soundUrls.toString()
-        holder.tvAuthor.text = "by ${itemList[position].author}"
+        holder.tvAuthor.text = holder.itemView.resources.getString(
+            R.string.by_string_format,
+            itemList[position].author
+        )
         //holder.tvCurrentVote.text = itemList[position].currentVote
         //holder.tvWrittenOn.text = itemList[position].writtenOn
-        holder.tvExample.text = "For example: \n${itemList[position].example}"
+        holder.tvExample.text = holder.itemView.resources.getString(
+            R.string.ie_string_format,
+            itemList[position].example
+        )
         holder.tvThumbsDown.text = itemList[position].thumbsDown.toString()
-
-//        if (position % 2 == 0) {
-//            Glide.with(holder.ivImage)
-//                .load("https://www.apple.com/ac/structured-data/images/open_graph_logo.png?201809211351")
-//                .into(holder.ivImage)
-//        } else {
-//            Glide.with(holder.ivImage).load("https://i.blogs.es/2b63f8/androidze/1366_2000.jpg")
-//                .into(holder.ivImage)
-//        }
 
         //all item click
         holder.itemView.setOnClickListener {

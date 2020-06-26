@@ -30,20 +30,24 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <ImageView
-            android:id="@+id/ivSort1"
+            android:id="@+id/ivDislike"
             android:layout_width="20dp"
             android:layout_height="20dp"
+            android:contentDescription="@string/iv_sort_by_dislikes"
+            android:onClick="@{() -> viewModel.sortByDefinitions(false)}"
             android:rotation="180"
             android:src="@drawable/hand01"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tilTerm" />
 
         <ImageView
-            android:id="@+id/ivSort2"
+            android:id="@+id/ivLike"
             android:layout_width="20dp"
             android:layout_height="20dp"
+            android:contentDescription="@string/iv_sort_by_likes"
+            android:onClick="@{() -> viewModel.sortByDefinitions(true)}"
             android:src="@drawable/hand01"
-            app:layout_constraintEnd_toStartOf="@id/ivSort1"
+            app:layout_constraintEnd_toStartOf="@id/ivDislike"
             app:layout_constraintTop_toBottomOf="@id/tilTerm" />
 
         <TextView
@@ -51,8 +55,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/tv_sort_by"
-            app:layout_constraintTop_toBottomOf="@id/tilTerm"
-            app:layout_constraintEnd_toStartOf="@id/ivSort2"/>
+            app:layout_constraintEnd_toStartOf="@id/ivLike"
+            app:layout_constraintTop_toBottomOf="@id/tilTerm" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvDefinitions"
@@ -60,7 +64,7 @@
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tilTerm" />
+            app:layout_constraintTop_toBottomOf="@id/ivLike" />
 
         <ProgressBar
             style="?android:attr/progressBarStyleLarge"

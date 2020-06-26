@@ -4,6 +4,7 @@ import androidx.databinding.Bindable
 import androidx.databinding.library.baseAdapters.BR
 import com.example.urbandictionaryapp.model.Definition
 import com.example.urbandictionaryapp.presentation.base.BaseViewModel
+import com.example.urbandictionaryapp.presentation.recyclerview.DefinitionItemViewModel
 import com.example.urbandictionaryapp.repository.ApiResult
 import com.example.urbandictionaryapp.repository.remote.ServerRepository
 import com.example.urbandictionaryapp.repository.runOnResult
@@ -20,9 +21,19 @@ class MainViewModel(
             Timber.d("MainViewModel_TAG: availableDefinitions: old: ${field.size}, new:${value.size}")
             //This property is Available Definitions
             field = value
+
+            recyclerItemsViewModel = value.map {
+                DefinitionItemViewModel().apply {
+                    definitionModel = it
+                }
+            }.toMutableList()
+
             notifyPropertyChanged(BR.availableDefinitions)
             notifyChange()
         }
+
+    var recyclerItemsViewModel = mutableListOf<DefinitionItemViewModel>()
+        private set
 
     @Bindable
     var term: String = "wat"

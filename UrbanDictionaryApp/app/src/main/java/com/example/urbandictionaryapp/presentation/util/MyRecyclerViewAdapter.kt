@@ -1,6 +1,5 @@
 package com.example.urbandictionaryapp.presentation.util
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,8 +7,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.urbandictionaryapp.R
 import com.example.urbandictionaryapp.model.Definition
-import kotlinx.android.synthetic.main.recycler_view_item_layout.view.*
-import timber.log.Timber
 
 class MyRecyclerViewAdapter(
     private val onMyItemClick: (Definition) -> Unit
@@ -70,10 +67,5 @@ class MyRecyclerViewAdapter(
         holder.itemView.setOnClickListener {
             onMyItemClick(itemList[position])
         }
-
-        //specific Item click
-        /*holder.tvPosition.setOnClickListener {
-            onMyItemClick(itemList[position])
-        }*/
     }
 }

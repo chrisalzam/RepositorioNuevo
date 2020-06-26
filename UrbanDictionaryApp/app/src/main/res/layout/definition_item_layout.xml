@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.urbandictionaryapp.presentation.recyclerview.DefinitionItemViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/tvId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.id}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="001" />
+
+        <TextView
+            android:id="@+id/tvWord"
+            style="@style/TitleStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.word}"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvId"
+            tools:text="Word" />
+
+        <TextView
+            android:id="@+id/tvDefinition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.definition}"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvWord"
+            tools:text="This is the definition..." />
+
+        <TextView
+            android:id="@+id/tvPermalink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.permanentLink}"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvDefinition"
+            tools:text="http:" />
+
+
+        <ImageView
+            android:id="@+id/imThumbsUp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:contentDescription="@string/iv_sort_by_likes"
+            android:src="@drawable/hand01"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvPermalink" />
+
+        <TextView
+            android:id="@+id/tvThumbsUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.thumbsUp}"
+            app:layout_constraintStart_toEndOf="@id/imThumbsUp"
+            app:layout_constraintTop_toBottomOf="@id/tvPermalink"
+            tools:text="10,000" />
+
+
+        <TextView
+            android:id="@+id/tvSoundsURL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imThumbsUp"
+            tools:text="http:" />
+
+        <TextView
+            android:id="@+id/tvAuthor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.author}"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvSoundsURL"
+            tools:text="Jhon Doe" />
+
+        <TextView
+            android:id="@+id/tvCurrentVote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvAuthor"
+            tools:text="2000" />
+
+        <TextView
+            android:id="@+id/tvWrittenOn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvCurrentVote"
+            tools:text="Written On" />
+
+        <TextView
+            android:id="@+id/tvExample"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.example}"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvWrittenOn"
+            tools:text="tv Example" />
+
+        <ImageView
+            android:id="@+id/imThumbsDown"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:contentDescription="@string/iv_sort_by_dislikes"
+            android:rotation="180"
+            android:src="@drawable/hand01"
+            app:layout_constraintEnd_toEndOf="@id/tvThumbsDown"
+            app:layout_constraintStart_toEndOf="@id/tvThumbsUp"
+            app:layout_constraintTop_toBottomOf="@id/tvPermalink" />
+
+        <TextView
+            android:id="@+id/tvThumbsDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.thumbsDown}"
+            app:layout_constraintStart_toEndOf="@id/imThumbsDown"
+            app:layout_constraintTop_toBottomOf="@id/tvPermalink"
+            tools:text="8000" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

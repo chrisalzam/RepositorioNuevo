@@ -29,15 +29,12 @@
                 android:text="@={viewModel.term}" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <ImageView
-            android:id="@+id/ivDislike"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:contentDescription="@string/iv_sort_by_dislikes"
-            android:onClick="@{() -> viewModel.sortByDefinitions(false)}"
-            android:rotation="180"
-            android:src="@drawable/hand01"
-            app:layout_constraintEnd_toEndOf="parent"
+        <TextView
+            android:id="@+id/tvSortBy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_sort_by"
+            app:layout_constraintEnd_toStartOf="@id/ivLike"
             app:layout_constraintTop_toBottomOf="@id/tilTerm" />
 
         <ImageView
@@ -50,12 +47,15 @@
             app:layout_constraintEnd_toStartOf="@id/ivDislike"
             app:layout_constraintTop_toBottomOf="@id/tilTerm" />
 
-        <TextView
-            android:id="@+id/tvSortBy"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/tv_sort_by"
-            app:layout_constraintEnd_toStartOf="@id/ivLike"
+        <ImageView
+            android:id="@+id/ivDislike"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:contentDescription="@string/iv_sort_by_dislikes"
+            android:onClick="@{() -> viewModel.sortByDefinitions(false)}"
+            android:rotation="180"
+            android:src="@drawable/hand01"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tilTerm" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -76,6 +76,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.exoplayer2.ui.SimpleExoPlayerView
+            android:id="@+id/epSound"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@android:color/transparent"
+            android:visibility="gone" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

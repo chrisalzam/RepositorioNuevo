@@ -46,7 +46,6 @@ class MainViewModel(
 
         }
 
-
     fun getDefinitions() = background {
         Timber.d("MainViewModel_TAG: getDefinitions: ")
 
@@ -69,4 +68,6 @@ class MainViewModel(
             availableDefinitions.sortedByDescending { it.thumbsDown }
         }
     }
+
+
 }

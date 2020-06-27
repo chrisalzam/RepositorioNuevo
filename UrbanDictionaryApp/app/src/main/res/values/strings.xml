@@ -6,4 +6,5 @@
     <string name="iv_sort_by_likes">Sort by likes</string>
     <string name="by_string_format">By %1$s</string>
     <string name="ie_string_format">i.e.\n%1$s</string>
+    <string name="iv_play_pronunciation">Play pronunciation</string>
 </resources>

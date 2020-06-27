@@ -29,4 +29,7 @@ class DefinitionItemViewModel : BaseViewModel() {
 
     val example: String?
         get() = definitionModel?.example
+
+    val sound: List<String>?
+        get() = definitionModel?.soundUrls
 }

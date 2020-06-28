@@ -41,9 +41,11 @@
             android:src="@drawable/sound_ico"
             android:contentDescription="@string/iv_play_pronunciation"
             android:paddingStart="10dp"
+            android:onClick="@{() -> viewModel.onImageClicked(viewModel.itemClickedId)}"
             app:layout_constraintStart_toEndOf="@id/tvWord"
             app:layout_constraintTop_toTopOf="@id/tvWord"
-            app:layout_constraintBottom_toBottomOf="@id/tvWord"/>
+            app:layout_constraintBottom_toBottomOf="@id/tvWord"
+            tools:ignore="RtlSymmetry" />
 
         <TextView
             android:id="@+id/tvDefinition"

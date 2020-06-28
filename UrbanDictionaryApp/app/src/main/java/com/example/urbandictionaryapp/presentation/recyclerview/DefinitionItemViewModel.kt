@@ -32,4 +32,7 @@ class DefinitionItemViewModel : BaseViewModel() {
 
     val sound: List<String>?
         get() = definitionModel?.soundUrls
+
+    val itemClickedId: Int?
+    get() = id?.toInt()
 }

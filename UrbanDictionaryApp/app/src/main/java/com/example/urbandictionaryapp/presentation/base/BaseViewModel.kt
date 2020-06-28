@@ -7,6 +7,7 @@ import androidx.databinding.PropertyChangeRegistry
 import androidx.databinding.library.baseAdapters.BR
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.*
+import timber.log.Timber
 
 open class BaseViewModel : ViewModel(), Observable {
     //region Background
@@ -56,6 +57,7 @@ open class BaseViewModel : ViewModel(), Observable {
     }
 
     fun notifyChange() {
+        //Timber.d("BaseViewModel_TAG: notifyChange: ")
         synchronized(this) {
             if (mCallbacks == null) {
                 return
@@ -81,6 +83,13 @@ open class BaseViewModel : ViewModel(), Observable {
             observers.add(action)
             onChangeObservers.put(propertyId, observers)
         }
+    }
+
+    var itemId: Int = 0
+
+    fun onImageClicked(idItem: Int) {
+        Timber.d("BaseViewModel_TAG: onImageClicked: $idItem")
+        itemId = idItem
     }
     //endregion
 

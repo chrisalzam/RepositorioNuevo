@@ -2,6 +2,7 @@ package com.example.urbandictionaryapp.presentation
 
 import androidx.databinding.Bindable
 import androidx.databinding.library.baseAdapters.BR
+import com.example.urbandictionaryapp.generated.callback.OnClickListener
 import com.example.urbandictionaryapp.model.Definition
 import com.example.urbandictionaryapp.presentation.base.BaseViewModel
 import com.example.urbandictionaryapp.presentation.recyclerview.DefinitionItemViewModel
@@ -46,6 +47,8 @@ class MainViewModel(
 
         }
 
+
+
     fun getDefinitions() = background {
         Timber.d("MainViewModel_TAG: getDefinitions: ")
 
@@ -55,6 +58,7 @@ class MainViewModel(
                 is ApiResult.Ok -> {
                     Timber.d("MainViewModel_TAG: getDefinitions: Ok")
                     availableDefinitions = result
+                    getSounds(4)
                 }
             }
         }
@@ -69,5 +73,18 @@ class MainViewModel(
         }
     }
 
+    fun getSounds(soundId: Int): List<String> {
+        var sounds: MutableList<String> = mutableListOf()
+
+        for (definitionItem in availableDefinitions)
+        {
+            if(definitionItem.id == soundId)
+            {
+                for (soundUrlsItem in definitionItem.soundUrls)
+                    sounds.add(soundUrlsItem)
+            }
+        }
+        return sounds
+    }
 
 }

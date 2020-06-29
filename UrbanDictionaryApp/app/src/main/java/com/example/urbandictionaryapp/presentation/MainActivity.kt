@@ -1,6 +1,5 @@
 package com.example.urbandictionaryapp.presentation
 
-import android.annotation.SuppressLint
 import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -39,15 +38,25 @@ class MainActivity : AppCompatActivity() {
         setBinding()
         viewModel.getDefinitions()
         wireOnPropertyChanged()
-
         fillRecyclerView()
+
+    }
+
+    private fun initializePlayer() {
+        Timber.d("MainActivity_TAG: initializePlayer: ")
+        player = ExoPlayerFactory.newSimpleInstance(applicationContext);
+        layoutBinding.epSound.player = player
     }
 
     override fun onStart() {
         super.onStart()
-        if (Util.SDK_INT >= 24) {
+        initializePlayer()
+    }
 
-        }
+    override fun onStop() {
+        super.onStop()
+
+        releasePlayer()
     }
 //region ExoPlayer Events
 //    override fun onResume() {
@@ -87,16 +96,8 @@ class MainActivity : AppCompatActivity() {
 //        }
 //    }
 
-//    private fun releasePlayer() {
-//        if (player != null) {
-//            playWhenReady = player.playWhenReady
-//            playbackPosition = player.currentPosition
-//            currentWindow = player.currentWindowIndex
-//            player.release()
-//            player = null
-//        }
-//    }
-    //end region
+
+    //endregion
 
     private fun setBinding() {
         Timber.d("MainActivity_TAG: setBinding: ")
@@ -111,34 +112,43 @@ class MainActivity : AppCompatActivity() {
         }
         myAdapter.itemList = viewModel.availableDefinitions*/
         myAdapter = RVDefinitionAdapter { _, definition ->
-            Timber.d("MainActivity: onDefinitionClicked: $definition")
+            Timber.d("MainActivity_TAG: fillRecyclerView: OnDefinitionClicked ${definition.id}")
+            preparePlayer(definition.soundUrls.first())
+            playWhenReady = true
         }
+
         myAdapter.itemList = emptyList()
 
         layoutBinding.rvDefinitions.apply {
             adapter = myAdapter
             layoutManager = LinearLayoutManager(this@MainActivity, RecyclerView.VERTICAL, false)
         }
-
     }
 
-    private fun initializePlayer() {
-        player = ExoPlayerFactory.newSimpleInstance(this);
-        layoutBinding.epSound.player = player
-
-        val uri = Uri.parse("https://storage.googleapis.com/exoplayer-test-media-0/play.mp3")
+    private fun preparePlayer(sound: String) {
+        Timber.d("MainActivity_TAG: preparePlayer: PLAYING $sound")
+        val uri = Uri.parse(sound)
         val mediaSource = buildMediaSource(uri)
 
+        //player.seekTo(currentWindow, playbackPosition)
+        player.prepare(mediaSource)
         player.playWhenReady = playWhenReady
-        player.seekTo(currentWindow, playbackPosition)
-        player.prepare(mediaSource, false, false)
     }
 
     private fun buildMediaSource(uri: Uri): MediaSource? {
         val dataSourceFactory: DataSource.Factory =
-            DefaultDataSourceFactory(this, "exoplayer-codelab")
+            DefaultDataSourceFactory(
+                applicationContext,
+                Util.getUserAgent(applicationContext, application.packageName)
+            )
         return ProgressiveMediaSource.Factory(dataSourceFactory)
             .createMediaSource(uri)
+    }
+
+    private fun releasePlayer() {
+        Timber.d("MainActivity_TAG: releasePlayer: PLAYING IF PLAYER != NULL")
+        //playWhenReady = player.playWhenReady
+        player.release()
     }
 
     private fun wireOnPropertyChanged() {

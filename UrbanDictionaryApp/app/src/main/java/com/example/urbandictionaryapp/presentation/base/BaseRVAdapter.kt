@@ -40,7 +40,7 @@ abstract class BaseRVAdapter<IT : Parcelable, IVM : BaseViewModel, VDB : ViewDat
         }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        Timber.d("BaseRVAdapter_TAG: onBindViewHolder: ")
+        //Timber.d("BaseRVAdapter_TAG: onBindViewHolder: ")
         try {
             val realPosition = if (infinite) position % itemList.size else position
             holder.itemBinding.setVariable(BR.viewModel, itemList[realPosition])

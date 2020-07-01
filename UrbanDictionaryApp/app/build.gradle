@@ -56,11 +56,11 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso"
     kapt 'com.android.databinding:compiler:3.2.0-alpha10'
-    //end region
+    //endregion
 
     //region timber
     implementation "com.jakewharton.timber:timber:$timber"
-    //end region
+    //endregion
 
     //region RecyclerView & CardView
     implementation "com.android.support:recyclerview-v7:$recyclerview"
@@ -98,9 +98,5 @@ dependencies {
 
     //region Exoplayer
     implementation "com.google.android.exoplayer:exoplayer:$exoplayer"
-    //end region
-
-    //region Multidex
-    implementation 'com.android.support:multidex:1.0.3'
     //end region
 }

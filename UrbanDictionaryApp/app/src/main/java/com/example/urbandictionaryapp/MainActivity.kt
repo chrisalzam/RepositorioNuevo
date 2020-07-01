@@ -1,4 +1,4 @@
-package com.example.urbandictionaryapp.presentation
+package com.example.urbandictionaryapp
 
 import android.net.Uri
 import android.os.Bundle
@@ -7,8 +7,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.library.baseAdapters.BR
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.urbandictionaryapp.R
 import com.example.urbandictionaryapp.databinding.ActivityMainBinding
+import com.example.urbandictionaryapp.presentation.MainViewModel
+import com.example.urbandictionaryapp.presentation.RVDefinitionAdapter
 import com.google.android.exoplayer2.ExoPlayerFactory
 import com.google.android.exoplayer2.SimpleExoPlayer
 import com.google.android.exoplayer2.source.MediaSource
@@ -111,11 +112,12 @@ class MainActivity : AppCompatActivity() {
         /*myAdapter = MyRecyclerViewAdapter {
         }
         myAdapter.itemList = viewModel.availableDefinitions*/
-        myAdapter = RVDefinitionAdapter { _, definition ->
-            Timber.d("MainActivity_TAG: fillRecyclerView: OnDefinitionClicked ${definition.id}")
-            preparePlayer(definition.soundUrls.first())
-            playWhenReady = true
-        }
+        myAdapter =
+            RVDefinitionAdapter { _, definition ->
+                Timber.d("MainActivity_TAG: fillRecyclerView: OnDefinitionClicked ${definition.id}")
+                preparePlayer(definition.soundUrls.first())
+                playWhenReady = true
+            }
 
         myAdapter.itemList = emptyList()
 

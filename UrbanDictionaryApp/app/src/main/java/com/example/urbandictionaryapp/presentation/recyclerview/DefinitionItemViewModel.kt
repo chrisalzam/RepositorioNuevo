@@ -4,7 +4,7 @@ import com.example.urbandictionaryapp.model.Definition
 import com.example.urbandictionaryapp.presentation.base.BaseViewModel
 
 class DefinitionItemViewModel : BaseViewModel() {
-    var definitionModel: Definition? = null
+    var     definitionModel: Definition? = null
 
     val id: String?
         get() = definitionModel?.id?.toString()

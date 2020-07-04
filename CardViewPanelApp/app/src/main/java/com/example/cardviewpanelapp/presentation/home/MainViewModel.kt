@@ -1,15 +1,12 @@
-package com.example.cardviewpanelapp.presentation.util
+package com.example.cardviewpanelapp.presentation.home
 
-import android.media.Image
 import androidx.databinding.Bindable
 import androidx.databinding.library.baseAdapters.BR
 import com.example.cardviewpanelapp.model.Application
-import com.example.cardviewpanelapp.presentation.recyclerview.MyApplicationsItemViewModel
 import com.example.cardviewpanelapp.presentation.base.BaseViewModel
 import com.example.cardviewpanelapp.repository.ApiResult
 import com.example.cardviewpanelapp.repository.remote.ServerRepository
 import com.example.cardviewpanelapp.repository.runOnResult
-import okhttp3.internal.immutableListOf
 import timber.log.Timber
 import java.util.Collections.emptyList
 
@@ -61,7 +58,10 @@ class MainViewModel(
 
         serverRepository.getApplicationsAsync().runOnResult {
             when (this) {
-                is ApiResult.Error -> Timber.d("MainViewModel_TAG: getApplications: Error: $error")
+                is ApiResult.Error -> {
+                    Timber.d("MainViewModel_TAG: getApplications: Error: $error")
+                    loading = false
+                }
                 is ApiResult.Ok -> {
                     Timber.d("MainViewModel_TAG: getApplications: Ok")
                     availableApplications = result
@@ -70,30 +70,4 @@ class MainViewModel(
         }
         Timber.d("MainViewModel_TAG: getApplications: $availableApplications")
     }
-
-
-//region Sort and Sound
-//    fun sortByNameOrId(byNameSorted: Boolean = true) {
-//        Timber.d("MainViewModel_TAG: sortByDefinitions: sortByDefinitions")
-//        availableApplications = if (byNameSorted) {
-//            availableApplications.sortedByDescending { it.name }
-//        } else {
-//            availableApplications.sortedByDescending { it.appId }
-//        }
-//    }
-
-//    fun getSounds(soundId: Int): List<String> {
-//        var sounds: MutableList<String> = mutableListOf()
-//
-//        for (definitionItem in availableApplications)
-//        {
-//            if(definitionItem.id == soundId)
-//            {
-//                for (soundUrlsItem in definitionItem.soundUrls)
-//                    sounds.add(soundUrlsItem)
-//            }
-//        }
-//        return sounds
-//    }
-//endregion
 }

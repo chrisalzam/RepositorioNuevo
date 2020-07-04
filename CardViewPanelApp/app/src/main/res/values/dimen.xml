@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="smallIcon">40dp</dimen>
+    <dimen name="iconResourceHeight">100dp</dimen>
+    <dimen name="mediumIcon">120dp</dimen>
+    <dimen name="bigIcon">160dp</dimen>
+
+    <dimen name="cardElevation">4dp</dimen>
+    <dimen name="cornerRadius">10dp</dimen>
+    <dimen name="cardAppPadding">20dp</dimen>
+
+    <dimen name="generalMargin">10dp</dimen>
+    <dimen name="generalPadding">10dp</dimen>
+</resources>

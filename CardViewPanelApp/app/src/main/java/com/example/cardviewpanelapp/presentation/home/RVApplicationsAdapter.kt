@@ -1,4 +1,4 @@
-package com.example.cardviewpanelapp.presentation
+package com.example.cardviewpanelapp.presentation.home
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import com.example.cardviewpanelapp.databinding.ApplicationItemLayoutBinding
 import com.example.cardviewpanelapp.model.Application
 import com.example.cardviewpanelapp.presentation.base.BaseRVAdapter
-import com.example.cardviewpanelapp.presentation.recyclerview.MyApplicationsItemViewModel
 
 class RVApplicationsAdapter(
     listener: (View, Application) -> Unit

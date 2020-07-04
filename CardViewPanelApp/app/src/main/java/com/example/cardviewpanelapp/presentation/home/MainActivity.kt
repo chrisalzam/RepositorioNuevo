@@ -1,15 +1,12 @@
-package com.example.cardviewpanelapp
+package com.example.cardviewpanelapp.presentation.home
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.library.baseAdapters.BR
-import androidx.lifecycle.ViewModel
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.GridLayoutManager
+import com.example.cardviewpanelapp.R
 import com.example.cardviewpanelapp.databinding.ActivityMainBinding
-import com.example.cardviewpanelapp.presentation.RVApplicationsAdapter
-import com.example.cardviewpanelapp.presentation.util.MainViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 import java.util.Collections.emptyList
@@ -19,6 +16,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var layoutBinding: ActivityMainBinding
     private lateinit var myAdapter: RVApplicationsAdapter
 
+    //region Life Cycle
     override fun onCreate(savedInstanceState: Bundle?) {
         Timber.d("MainActivity_TAG: onCreate: ")
         super.onCreate(savedInstanceState)
@@ -26,16 +24,24 @@ class MainActivity : AppCompatActivity() {
 
         setBinding()
         wireOnPropertyChanged()
-        fillRecyclerView()
-        viewModel.getApplications()
-
     }
+
+    override fun onResume() {
+        super.onResume()
+
+        initRecyclerView()
+        viewModel.getApplications()
+    }
+    //endregion
 
     private fun setBinding() {
         Timber.d("MainActivity_TAG: setBinding: ")
-        layoutBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        layoutBinding = DataBindingUtil.setContentView(this,
+            R.layout.activity_main
+        )
         layoutBinding.lifecycleOwner = this
         layoutBinding.viewModel = viewModel
+        viewModel.loading = true
     }
 
     private fun wireOnPropertyChanged() {
@@ -47,27 +53,27 @@ class MainActivity : AppCompatActivity() {
             myAdapter.itemList = viewModel.recyclerItemsViewModel
             viewModel.loading = false
         }
-
-        viewModel.onPropertyChanged(BR.appId) {
-            Timber.d("MainActivity_TAG: wireOnPropertyChanged: term: ${viewModel.appId}")
-            viewModel.loading = true
-            viewModel.getApplications()
-        }
-
     }
 
-    private fun fillRecyclerView() {
+    private fun initRecyclerView() {
         Timber.d("MainActivity_TAG: fillRecyclerView: ")
-        /*myAdapter = MyRecyclerViewAdapter {
-        }
-        myAdapter.itemList = viewModel.availableDefinitions*/
-        myAdapter =
-                RVApplicationsAdapter { _, applications ->
-                    Timber.d("MainActivity_TAG: fillRecyclerView: OnDefinitionClicked ${applications.appId.length}")
-                }
-        myAdapter.itemList = emptyList()
 
-        layoutBinding.rvApps.adapter = myAdapter
-        layoutBinding.rvApps.layoutManager = LinearLayoutManager(this@MainActivity, RecyclerView.VERTICAL, false)
+        //region Create Adapter and set onItemClickListener (when the user clicks an item)
+        myAdapter =
+            RVApplicationsAdapter { _, application ->
+                Timber.d("MainActivity_TAG: initRecyclerView: onAppClicked: ${application.name}")
+            }
+        //endregion
+
+        //region init empty list for the recyclerview items
+        myAdapter.itemList = emptyList()
+        //endregion
+
+        //region Apply configurations
+        layoutBinding.rvApps.apply {
+            adapter = myAdapter
+            layoutManager = GridLayoutManager(this@MainActivity, 4)
         }
+        //endregion
     }
+}

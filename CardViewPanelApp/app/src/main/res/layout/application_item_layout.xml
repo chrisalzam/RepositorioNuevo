@@ -7,35 +7,40 @@
 
         <variable
             name="viewModel"
-            type="com.example.cardviewpanelapp.presentation.recyclerview.MyApplicationsItemViewModel" />
+            type="com.example.cardviewpanelapp.presentation.home.MyApplicationsItemViewModel" />
     </data>
 
     <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="20dp"
         app:cardBackgroundColor="@color/colorGrayDark"
-        app:cardCornerRadius="10dp">
+        app:cardCornerRadius="@dimen/cornerRadius">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp">
 
             <ImageView
                 android:id="@+id/ivIcon"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/iconResourceHeight"
+                android:adjustViewBounds="true"
                 android:contentDescription="@{viewModel.name}"
+                app:iconColor="@{@color/colorWhite}"
+                app:iconResourceName="@{viewModel.iconResourceName}"
+                app:imageUrl="@{viewModel.iconUrl}"
                 app:layout_constraintBottom_toTopOf="@id/tvAppName"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:src="@{viewModel.appIcon}" />
+                tools:src="@drawable/ic_tv_alt" />
 
             <TextView
                 android:id="@+id/tvAppName"
                 style="@style/AppFont"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{viewModel.name}"
                 app:layout_constraintBottom_toBottomOf="parent"

@@ -1,10 +1,10 @@
-package com.r2devpros.myrestapptest.di
+package com.example.cardviewpanelapp.di
 
+import com.example.cardviewpanelapp.BuildConfig
+import com.example.cardviewpanelapp.repository.remote.ServerRepositoryImplementation
+import com.example.cardviewpanelapp.repository.remote.ServerAPI
+import com.example.cardviewpanelapp.repository.remote.ServerRepository
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
-import com.r2devpros.myrestapptest.BuildConfig
-import com.r2devpros.myrestapptest.repository.remote.ServerAPI
-import com.r2devpros.myrestapptest.repository.remote.ServerRepository
-import com.r2devpros.myrestapptest.repository.remote.ServerRepositoryImpl
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
@@ -38,7 +38,11 @@ private val logLevel =
 
 val serverServiceModule = module {
     single<ServerAPI> { createWebService(get(), "https://run.mocky.io/") }
-    single<ServerRepository> { ServerRepositoryImpl(get()) }
+    single<ServerRepository> {
+        ServerRepositoryImplementation(
+            get()
+        )
+    }
 }
 
 val repositoryModule = listOf(

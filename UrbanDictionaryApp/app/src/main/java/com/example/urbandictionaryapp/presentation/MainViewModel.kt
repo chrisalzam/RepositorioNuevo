@@ -11,6 +11,7 @@ import com.example.urbandictionaryapp.repository.remote.ServerRepository
 import com.example.urbandictionaryapp.repository.runOnResult
 import timber.log.Timber
 import java.util.*
+import java.util.Collections.emptyList
 
 class MainViewModel(
     private val serverRepository: ServerRepository

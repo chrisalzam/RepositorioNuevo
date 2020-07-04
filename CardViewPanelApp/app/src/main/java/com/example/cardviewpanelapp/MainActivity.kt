@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.library.baseAdapters.BR
+import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cardviewpanelapp.databinding.ActivityMainBinding
@@ -11,6 +12,7 @@ import com.example.cardviewpanelapp.presentation.RVApplicationsAdapter
 import com.example.cardviewpanelapp.presentation.util.MainViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
+import java.util.Collections.emptyList
 
 class MainActivity : AppCompatActivity() {
     private val viewModel by viewModel<MainViewModel>()
@@ -18,13 +20,14 @@ class MainActivity : AppCompatActivity() {
     private lateinit var myAdapter: RVApplicationsAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        Timber.d("MainActivity_TAG: onCreate: ")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         setBinding()
-        viewModel.getApplications()
         wireOnPropertyChanged()
         fillRecyclerView()
+        viewModel.getApplications()
 
     }
 
@@ -59,15 +62,12 @@ class MainActivity : AppCompatActivity() {
         }
         myAdapter.itemList = viewModel.availableDefinitions*/
         myAdapter =
-            RVApplicationsAdapter { _, definition ->
-                Timber.d("MainActivity_TAG: fillRecyclerView: OnDefinitionClicked ${definition.appId}")
-            }
-
+                RVApplicationsAdapter { _, applications ->
+                    Timber.d("MainActivity_TAG: fillRecyclerView: OnDefinitionClicked ${applications.appId.length}")
+                }
         myAdapter.itemList = emptyList()
 
-//        layoutBinding.rvDefinitions.apply {
-//            adapter = myAdapter
-//            layoutManager = LinearLayoutManager(this@MainActivity, RecyclerView.VERTICAL, false)
-//        }
+        layoutBinding.rvApps.adapter = myAdapter
+        layoutBinding.rvApps.layoutManager = LinearLayoutManager(this@MainActivity, RecyclerView.VERTICAL, false)
+        }
     }
-}

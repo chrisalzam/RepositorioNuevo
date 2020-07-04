@@ -1,10 +1,10 @@
 package com.example.cardviewpanelapp.presentation.recyclerview
 
-import com.example.cardviewpanelapp.model.MyApplications
+import com.example.cardviewpanelapp.model.Application
 import com.example.cardviewpanelapp.presentation.base.BaseViewModel
 
 class MyApplicationsItemViewModel : BaseViewModel() {
-    var     myApplicationsModel: MyApplications? = null
+    var     myApplicationsModel: Application? = null
 
     val appId: String?
         get() = myApplicationsModel?.appId

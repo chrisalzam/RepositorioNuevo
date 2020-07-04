@@ -37,7 +37,7 @@ private val logLevel =
     else HttpLoggingInterceptor.Level.BODY
 
 val serverServiceModule = module {
-    single<ServerAPI> { createWebService(get(), "https://order.dominos.com/") }
+    single<ServerAPI> { createWebService(get(), "https://run.mocky.io/") }
     single<ServerRepository> {
         ServerRepositoryImplementation(
             get()

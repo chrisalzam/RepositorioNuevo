@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class MyApplications(
+data class Application(
     var appId: String = "",
     var name: String = "",
     var deepLink: String = "",

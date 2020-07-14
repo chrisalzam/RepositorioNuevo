@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AppMonitor</string>
+    <string name="tv_lunch_google_chrome">Lunch Google Chrome</string>
+    <string name="btn_lunch_app">Lunch App</string>
 </resources>

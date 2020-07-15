@@ -4,7 +4,7 @@ import android.app.ActivityManager
 import android.content.Context
 
 
-class MyRunApps {
+object MyRunApps {
     fun isAppRunning(context: Context, packageName: String): Boolean {
         val activityManager =
             context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager

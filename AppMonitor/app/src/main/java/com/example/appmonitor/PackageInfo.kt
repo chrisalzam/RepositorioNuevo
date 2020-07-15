@@ -3,13 +3,12 @@ package com.example.appmonitor
 import android.graphics.drawable.Drawable
 import android.util.Log
 
-class PackageInfo {
+class PackageInfo(appname: String, pname: String) {
     var appname = ""
     var pname = ""
-    var classname = ""
-    var versionCode = 0
-    var icon: Drawable? = null
-    fun prettyPrint() {
-        Log.d("Applist ", "APP NAME: $appname, PACKAGE NAME: $pname, CLASS NAME: $classname, VERSION CODE: $versionCode")
-    }
+//    var classname = ""
+//    var icon: Drawable? = null
+//    fun PrintInfo() {
+//        Log.d("MainActivity_TAG: Applist ", "APP NAME: $appname, PACKAGE NAME: $pname")
+//    }
 }

@@ -4,4 +4,6 @@
     <string name="btn_lunch_app">Lunch App</string>
     <string name="btn_show_packages">Show Packages</string>
     <string name="finished_text">Finished</string>
+    <string name="btn_stop">STOP</string>
+    <string name="btn_launch">LAUNCH</string>
 </resources>

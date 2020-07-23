@@ -1,4 +1,4 @@
-package com.example.appmonitor
+package com.r2devpros.appmonitor
 
 import org.junit.Test
 

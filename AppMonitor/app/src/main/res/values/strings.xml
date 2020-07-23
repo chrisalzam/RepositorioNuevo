@@ -6,4 +6,5 @@
     <string name="finished_text">Finished</string>
     <string name="btn_stop">STOP</string>
     <string name="btn_launch">LAUNCH</string>
+    <string name="please_wait_we_are_updating_your_system">Please Wait \nwe are updating your system</string>
 </resources>

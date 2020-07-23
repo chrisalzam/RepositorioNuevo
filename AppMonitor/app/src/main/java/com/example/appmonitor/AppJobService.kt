@@ -58,7 +58,7 @@ class AppJobService : JobService() {
                         Log.d(TAG, "Your App IS NOT INSTALLED")
                 }
                 Log.d(TAG, "Job Finished")
-                jobFinished(params, false)
+                jobFinished(params, true)
 //            }
 //        }
 //        timer.schedule(monitor, 1000, 1000)
